@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شروط الاستخدام — MyKal</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="canonical" href="https://mykal.app/terms-ar.html">
+    <link rel="alternate" hreflang="en" href="https://mykal.app/terms.html">
+    <link rel="alternate" hreflang="ar" href="https://mykal.app/terms-ar.html">
+    <script>
+    (function(){
+        var s = localStorage.getItem('mykal-lang');
+        if (s === 'en' || (!s && !(navigator.language || '').startsWith('ar'))) {
+            var p = location.pathname.split('/').pop() || 'terms-ar.html';
+            location.replace(p.replace('-ar.html', '.html'));
+        }
+    })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --orange: #E8742A; --dark: #2C1810; --medium: #6B5B50; --light: #A89585; --cream: #FBF7F2; --border: #E8E0D6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'IBM Plex Sans Arabic', sans-serif; background: var(--cream); color: var(--dark); line-height: 1.8; }
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(251,247,242,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; height: 64px; gap: 16px; }
+        .nav-inner a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+        .nav-inner img { width: 36px; border-radius: 10px; }
+        .nav-links { margin-right: auto; margin-left: 0; display: flex; gap: 24px; list-style: none; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--medium); }
+        .nav-links a:hover { color: var(--orange); }
+        .lang-link { margin-right: auto; margin-left: 0; font-size: 14px; color: var(--medium) !important; font-weight: 500 !important; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 32px; position: relative; }
+        .hamburger span { display: block; width: 20px; height: 2px; background: var(--dark); position: absolute; left: 6px; transition: .3s; }
+        .hamburger span:nth-child(1) { top: 9px; } .hamburger span:nth-child(2) { top: 15px; } .hamburger span:nth-child(3) { top: 21px; }
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg); top: 15px; }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg); top: 15px; }
+        .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--cream); z-index: 99; padding: 32px 24px; flex-direction: column; gap: 24px; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 18px; font-weight: 600; color: var(--dark); text-decoration: none; }
+        .mobile-menu a:hover { color: var(--orange); }
+        footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 40px 24px 24px; margin-top: 60px; font-size: 13px; }
+        .footer-inner { max-width: 700px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; }
+        .footer-inner a { color: rgba(255,255,255,0.6); text-decoration: none; }
+        .footer-inner a:hover { color: #fff; }
+        .footer-bottom { max-width: 700px; margin: 24px auto 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); }
+        :focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 4px; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+        .page-content { max-width: 700px; margin: 0 auto; padding: 120px 24px 80px; animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+        .page-content h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.15s both; }
+        .page-content .date { font-size: 13px; color: var(--light); margin-bottom: 32px; }
+        .page-content h2 { font-size: 18px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; }
+        .page-content p, .page-content li { font-size: 15px; color: var(--medium); margin-bottom: 12px; }
+        .page-content ul { padding-right: 20px; }
+        .page-content a { color: var(--orange); }
+        @media (max-width: 768px) { .nav-links { display: none; } .lang-link { margin-right: auto; } .hamburger { display: block; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index-ar.html"><img src="icon-192.png" alt="MyKal"><span>MyKal</span></a>
+        <ul class="nav-links">
+            <li><a href="index-ar.html">الرئيسية</a></li>
+            <li><a href="privacy-ar.html">الخصوصية</a></li>
+            <li><a href="support-ar.html">الدعم</a></li>
+        </ul>
+        <a href="terms.html" class="lang-link" onclick="localStorage.setItem('mykal-lang','en')">English</a>
+        <button class="hamburger" id="hamburger" aria-label="القائمة"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index-ar.html">الرئيسية</a>
+    <a href="privacy-ar.html">الخصوصية</a>
+    <a href="support-ar.html">الدعم</a>
+    <a href="terms.html" onclick="localStorage.setItem('mykal-lang','en')">English</a>
+</div>
+
+<div class="page-content">
+    <h1>شروط الاستخدام</h1>
+    <p class="date">آخر تحديث: 25 مارس 2026</p>
+
+    <p>هذي الشروط ("الشروط") تنظم استخدامك لتطبيق MyKal ("التطبيق"). بتحميلك أو استخدامك للتطبيق، أنت توافق على هذي الشروط.</p>
+
+    <h2>1. الأهلية</h2>
+    <p>لازم يكون عمرك 13 سنة على الأقل عشان تستخدم MyKal. باستخدامك للتطبيق، أنت تقر إنك تستوفي هالشرط.</p>
+
+    <h2>2. الحساب</h2>
+    <p>أنت مسؤول عن حماية بيانات حسابك. ما تقدر تشارك حسابك مع غيرك أو تستخدم حساب شخص ثاني بدون إذنه.</p>
+
+    <h2>3. الاستخدام المقبول</h2>
+    <p>توافق على استخدام MyKal بس لغرضه الأساسي — متابعة التغذية الشخصية. ما يصير:</p>
+    <ul>
+        <li>تستخدم التطبيق لأي غرض غير قانوني</li>
+        <li>تحاول تفك أو تستغل التطبيق تقنياً</li>
+        <li>تسيء استخدام مميزات الذكاء الاصطناعي بإرسال محتوى ضار أو مسيء</li>
+        <li>تستخدم أدوات آلية للوصول للتطبيق</li>
+        <li>تنتحل شخصية غيرك أو تسيء استخدام المميزات الاجتماعية</li>
+    </ul>
+
+    <h2>4. الاشتراكات والدفع</h2>
+    <p>MyKal يوفر اشتراك Premium بالشروط التالية:</p>
+    <ul>
+        <li><strong>تجربة مجانية:</strong> المستخدمين الجدد يحصلون على تحليل وجبة واحدة مجاناً لتجربة الخدمة.</li>
+        <li><strong>خطط الاشتراك:</strong> اشتراكات شهرية وسنوية متجددة تلقائياً.</li>
+        <li><strong>الدفع:</strong> المدفوعات تتم من خلال حساب Apple ID وتخصم من طريقة الدفع عند تأكيد الشراء.</li>
+        <li><strong>التجديد التلقائي:</strong> الاشتراكات تتجدد تلقائياً إلا إذا لغيتها قبل 24 ساعة على الأقل من نهاية الفترة الحالية.</li>
+        <li><strong>الإلغاء:</strong> تقدر تلغي اشتراكك بأي وقت من إعدادات Apple ID (إعدادات الايفون > Apple ID > الاشتراكات). الإلغاء يسري من نهاية فترة الفوترة الحالية.</li>
+        <li><strong>الاسترداد:</strong> طلبات الاسترداد تدار من خلال Apple حسب سياسة الاسترداد عندهم.</li>
+    </ul>
+
+    <h2>5. المحتوى المنتج بالذكاء الاصطناعي</h2>
+    <p>MyKal يستخدم الذكاء الاصطناعي لتحليل الوجبات وتقدير القيم الغذائية. هذي التقديرات لأغراض المعلومات والمتابعة فقط. مو نصيحة طبية، وما نضمن دقتها. دائماً استشر متخصص رعاية صحية للتوجيه الغذائي الطبي.</p>
+
+    <h2>6. الملكية الفكرية</h2>
+    <p>كل المحتوى والتصميم والتقنية في MyKal ملكنا ومحمية بقوانين الملكية الفكرية. تحصل على ترخيص محدود وغير حصري وغير قابل للتحويل لاستخدام التطبيق لأغراض شخصية.</p>
+
+    <h2>7. محتوى المستخدم</h2>
+    <p>أنت تحتفظ بملكية المحتوى اللي تنشئه بالتطبيق (سجلات الوجبات، الأهداف، الرسائل). باستخدامك للتطبيق، تمنحنا ترخيص محدود لمعالجة هذا المحتوى فقط لتقديم الخدمة.</p>
+
+    <h2>8. تحديد المسؤولية</h2>
+    <p>MyKal يُقدم "كما هو" بدون ضمانات من أي نوع. ما نتحمل مسؤولية أي أضرار ناتجة عن استخدامك للتطبيق، بما في ذلك القرارات الصحية المبنية على تقديرات الذكاء الاصطناعي الغذائية.</p>
+
+    <h2>9. الإنهاء</h2>
+    <p>نقدر نعلق أو نلغي حسابك إذا خالفت هذي الشروط. تقدر تحذف حسابك بأي وقت من إعدادات التطبيق، وهذا يحذف كل بياناتك بشكل دائم.</p>
+
+    <h2>10. تغييرات على الشروط</h2>
+    <p>ممكن نحدّث هذي الشروط من وقت لآخر. بنعلمك عن أي تغييرات جوهرية من خلال التطبيق. استمرارك بالاستخدام بعد التغييرات يعني موافقتك عليها.</p>
+
+    <h2>11. القانون المطبق</h2>
+    <p>هذي الشروط تخضع لقوانين ولاية وايومنغ، الولايات المتحدة. أي نزاعات تُحل في محاكم ولاية وايومنغ. MyKal يُدار من قبل MyKal LLC، شركة ذات مسؤولية محدودة مسجلة في وايومنغ.</p>
+
+    <h2>12. تواصل معنا</h2>
+    <p>إذا عندك أسئلة عن هذي الشروط، تواصل معنا على <a href="mailto:support@mykal.app">support@mykal.app</a>.</p>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <div><a href="index-ar.html">الرئيسية</a></div>
+        <div><a href="privacy-ar.html">الخصوصية</a></div>
+        <div><a href="support-ar.html">الدعم</a></div>
+        <div><a href="mailto:support@mykal.app">support@mykal.app</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 MyKal LLC. جميع الحقوق محفوظة.</div>
+</footer>
+
+<script>
+const h=document.getElementById('hamburger'),m=document.getElementById('mobileMenu');
+h.addEventListener('click',()=>{h.classList.toggle('open');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';});
+</script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang-target="index.html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ماي كال — رفيقك الذكي للتغذية</title>
+    <meta name="description" content="تابع وجباتك، حقق أهدافك الغذائية، واحصل على تحليلات ذكية بالذكاء الاصطناعي. متوفر على iOS.">
+    <meta property="og:title" content="ماي كال — رفيقك الذكي للتغذية">
+    <meta property="og:description" content="تابع وجباتك بالذكاء الاصطناعي، حقق أهداف الماكرو، وابني عادات صحية.">
+    <meta property="og:image" content="https://mykal.app/icon-512.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mykal.app/index-ar">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="canonical" href="https://mykal.app/index-ar">
+    <link rel="alternate" hreflang="en" href="https://mykal.app/">
+    <link rel="alternate" hreflang="ar" href="https://mykal.app/index-ar">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/rtl-overrides.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+    <script>
+    (function(){
+        var s = localStorage.getItem('mykal-lang');
+        if (s === 'en') {
+            var p = location.pathname.split('/').pop() || 'index-ar.html';
+            if (p.indexOf('.html') === -1) p += '.html';
+            location.replace(p.replace('-ar.html', '.html'));
+        }
+    })();
+    </script>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav id="navbar" aria-label="التنقل الرئيسي">
+    <div class="nav-inner">
+        <a href="index-ar.html" class="nav-logo"><img src="icon-192.png" alt="ماي كال"><span>ماي كال</span></a>
+        <ul class="nav-links">
+            <li><a href="#features">المميزات</a></li>
+            <li><a href="#how-it-works">طريقة الاستخدام</a></li>
+            <li><a href="support-ar.html">الدعم</a></li>
+            <li><a href="https://apps.apple.com/app/mykal" class="nav-cta" target="_blank" rel="noopener">تحميل</a></li>
+        </ul>
+        <button class="lang-switch" onclick="switchLang()">English</button>
+        <button class="hamburger" id="hamburger" aria-label="القائمة"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="القائمة المتنقلة">
+    <a href="#features" onclick="closeMenu()">المميزات</a>
+    <a href="#how-it-works" onclick="closeMenu()">طريقة الاستخدام</a>
+    <a href="support-ar.html">الدعم</a>
+    <a href="privacy-ar.html">الخصوصية</a>
+    <a href="terms-ar.html">الشروط</a>
+    <a href="https://apps.apple.com/app/mykal" class="mobile-cta" target="_blank" rel="noopener">تحميل التطبيق</a>
+    <button class="mobile-lang" onclick="switchLang()">English</button>
+</div>
+
+<main>
+<!-- ===== UNIFIED HERO + STORY + INTERSTITIAL — ONE phone, ONE section ===== -->
+<section class="hero-story-section" id="heroStorySection">
+    <div class="hero-story-sticky">
+        <div class="hero-glow"></div>
+
+        <!-- Story labels (phases 3-5, RIGHT of phone in RTL) -->
+        <div class="story-labels fade-out" id="storyLabels">
+            <div class="story-label" data-step="1">صوّر.<div class="story-label-desc">وجّه الكاميرا على أي وجبة. الذكاء الاصطناعي يتعرف على أكلك فوراً.</div></div>
+            <div class="story-label" data-step="2">سجّل.<div class="story-label-desc">AI يحلل كل سعرة وماكرو بثوانٍ. بروتين، كارب، دهون — كله تلقائي.</div></div>
+            <div class="story-label" data-step="3">تابع.<div class="story-label-desc">شوف تقدمك اليومي لحظة بلحظة. حقق أهدافك وتابع مسارك.</div></div>
+        </div>
+
+        <!-- Hero text (outside phone, right on desktop RTL, above on mobile) -->
+        <div class="hero-overlay" id="heroOverlay">
+            <div class="hero-badge"><span class="dot"></span> تتبع غذائي بالذكاء الاصطناعي</div>
+            <h1>تابع. كل.<br>انطلق.</h1>
+            <p class="hero-sub">صوّر وجبتك، تكلم، أو اكتب — ماي كال يحلل كل شي بالذكاء الاصطناعي.</p>
+            <div class="hero-cta">
+                <a href="https://apps.apple.com/app/mykal" class="btn-magic primary" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    حمّل من App Store
+                </a>
+                <a href="#features" class="btn-magic ghost">استكشف</a>
+            </div>
+        </div>
+
+        <!-- ONE phone — everything happens inside this -->
+        <div class="hero-phone-wrapper" id="heroPhoneWrapper">
+            <div class="hero-phone">
+                <!-- Phone screen: app UI content lives here -->
+                <div class="phone-screen">
+                    <!-- Cycling notification toasts (hero phase) -->
+                    <div class="hero-toasts" id="heroToasts">
+                        <div class="hero-toast">&#9989; تم تسجيل 420 سعرة</div>
+                        <div class="hero-toast">&#127881; وصلت 80% من الهدف!</div>
+                        <div class="hero-toast">&#129302; نصيحة AI: زد البروتين</div>
+                    </div>
+
+                    <!-- Screen 0: Dashboard (hero phase) -->
+                    <div class="screen-state active" data-step="0">
+                        <div class="app-header">
+                            <div class="app-avatar"></div>
+                            <div class="app-greeting">صباح الخير! &#128075;</div>
+                            <div class="app-cal-strip">
+                                <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span class="cal-active">27</span>
+                            </div>
+                        </div>
+                        <div class="app-body">
+                            <div class="app-calories"><span class="app-cal-num">1,284 / 2,100</span><span class="app-cal-label">سعرات</span></div>
+                            <div class="app-macros">
+                                <div class="app-macro"><div class="app-macro-val" style="color:var(--orange)">&#128293; 65g</div><span class="app-macro-name">بروتين</span></div>
+                                <div class="app-macro"><div class="app-macro-val" style="color:var(--green)">&#129382; 142g</div><span class="app-macro-name">كارب</span></div>
+                                <div class="app-macro"><div class="app-macro-val" style="color:var(--blue)">&#128167; 38g</div><span class="app-macro-name">دهون</span></div>
+                            </div>
+                            <div class="app-log-btn">+ سجّل وجبة</div>
+                            <div class="app-section-title">وجبات اليوم</div>
+                            <div class="app-meal"><span class="app-meal-left">&#127859; فطور</span><span class="app-meal-cal">420</span></div>
+                            <div class="app-meal"><span class="app-meal-left">&#127836; غداء</span><span class="app-meal-cal">580</span></div>
+                            <div class="app-meal"><span class="app-meal-left">&#127848; سناك</span><span class="app-meal-cal">284</span></div>
+                        </div>
+                        <div class="app-tabbar">
+                            <span class="app-tab active">&#127968;</span><span class="app-tab">&#128172;</span><span class="app-tab">&#128202;</span><span class="app-tab">&#128101;</span><span class="app-tab">&#9881;&#65039;</span>
+                        </div>
+                    </div>
+
+                    <!-- Screen 1: Camera (Snap phase) -->
+                    <div class="screen-state camera-screen" data-step="1">
+                        <div class="camera-viewfinder">
+                            <div class="camera-corner tl"></div><div class="camera-corner tr"></div><div class="camera-corner bl"></div><div class="camera-corner br"></div>
+                            <div class="camera-meal-preview">&#127869;</div>
+                        </div>
+                        <div class="camera-btn"></div>
+                        <div class="camera-label">اضغط للتحليل</div>
+                    </div>
+
+                    <!-- Screen 2: AI Analysis (Log phase) -->
+                    <div class="screen-state analysis-screen" data-step="2">
+                        <div class="analysis-header"><div class="analysis-title">&#129302; تحليل AI</div><div class="analysis-subtitle">دجاج مشوي مع رز</div></div>
+                        <div class="analysis-body">
+                            <div class="analysis-food"><div class="analysis-food-emoji">&#127835;</div><div class="analysis-food-name">دجاج مشوي مع رز</div></div>
+                            <div class="analysis-cal-ring"><span class="analysis-cal-num">520</span><span class="analysis-cal-label">سعرة</span></div>
+                            <div class="analysis-macros">
+                                <div class="analysis-macro"><div class="analysis-macro-val" style="color:var(--orange)">42g</div><span class="analysis-macro-name">بروتين</span><div class="analysis-macro-bar" style="background:var(--orange);width:75%"></div></div>
+                                <div class="analysis-macro"><div class="analysis-macro-val" style="color:var(--green)">48g</div><span class="analysis-macro-name">كارب</span><div class="analysis-macro-bar" style="background:var(--green);width:60%"></div></div>
+                                <div class="analysis-macro"><div class="analysis-macro-val" style="color:var(--blue)">14g</div><span class="analysis-macro-name">دهون</span><div class="analysis-macro-bar" style="background:var(--blue);width:35%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Screen 3: Updated Dashboard (Track phase) -->
+                    <div class="screen-state" data-step="3">
+                        <div class="app-header"><div class="app-avatar"></div><div class="app-greeting">مساء الخير! &#127769;</div><div class="app-cal-strip"><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span class="cal-active">27</span></div></div>
+                        <div class="app-body">
+                            <div class="app-calories"><span class="app-cal-num">1,804 / 2,100</span><span class="app-cal-label">سعرات</span></div>
+                            <div class="app-macros">
+                                <div class="app-macro"><div class="app-macro-val" style="color:var(--orange)">&#128293; 107g</div><span class="app-macro-name">بروتين</span></div>
+                                <div class="app-macro"><div class="app-macro-val" style="color:var(--green)">&#129382; 190g</div><span class="app-macro-name">كارب</span></div>
+                                <div class="app-macro"><div class="app-macro-val" style="color:var(--blue)">&#128167; 52g</div><span class="app-macro-name">دهون</span></div>
+                            </div>
+                            <div class="app-log-btn">+ سجّل وجبة</div>
+                            <div class="app-section-title">وجبات اليوم</div>
+                            <div class="app-meal"><span class="app-meal-left">&#127859; فطور</span><span class="app-meal-cal">420</span></div>
+                            <div class="app-meal"><span class="app-meal-left">&#127836; غداء</span><span class="app-meal-cal">580</span></div>
+                            <div class="app-meal"><span class="app-meal-left">&#127835; عشاء</span><span class="app-meal-cal">520</span></div>
+                            <div class="app-meal"><span class="app-meal-left">&#127848; سناك</span><span class="app-meal-cal">284</span></div>
+                        </div>
+                        <div class="app-tabbar"><span class="app-tab active">&#127968;</span><span class="app-tab">&#128172;</span><span class="app-tab">&#128202;</span><span class="app-tab">&#128101;</span><span class="app-tab">&#9881;&#65039;</span></div>
+                    </div>
+                </div>
+                <div class="phone-frame"></div>
+            </div>
+        </div>
+
+        <!-- Interstitial statement (phase 6) -->
+        <div class="hero-interstitial" id="heroInterstitial">
+            <h2>أذكى طريقة لتتبع التغذية. <span class="accent">أبداً.</span></h2>
+        </div>
+
+        <!-- Scroll hint (hero phase only) -->
+        <div class="scroll-hint" id="scrollHint"><div class="scroll-mouse"><div class="scroll-mouse-dot"></div></div><span>اسحب للاستكشاف</span></div>
+    </div>
+</section>
+
+<!-- ===== FEATURE CARDS — 3 Cards, 3D Fanned ===== -->
+<section class="features-section" id="features">
+    <div class="features-inner">
+        <div class="features-header view-up">
+            <h2>مصمم للحياة الواقعية.</h2>
+            <p>ثلاث طرق للتسجيل. نظام ذكي واحد. بدون أي تعقيد.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card view-up stagger-1">
+                <span class="feature-icon">&#128248;</span>
+                <h3>تحليل بالصور</h3>
+                <p>صوّر أي وجبة. الذكاء الاصطناعي يتعرف على الأكل، يقدّر الكميات، ويحسب القيم الغذائية فوراً.</p>
+            </div>
+            <div class="feature-card view-up stagger-2">
+                <span class="feature-icon">&#127908;</span>
+                <h3>إدخال صوتي ونصي</h3>
+                <p>قل وش أكلت أو اكتبه. التعرف الطبيعي يسجّل وجباتك بدون أي تعقيد.</p>
+            </div>
+            <div class="feature-card view-up stagger-3">
+                <span class="feature-icon">&#129302;</span>
+                <h3>مساعد AI</h3>
+                <p>اسأل أي شي عن التغذية. احصل على اقتراحات وجبات، تابع الماكرو المتبقي، وخطط يومك.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SHOWCASE — Split Surface ===== -->
+<section class="showcase-section" id="how-it-works">
+    <div class="showcase-container view-up">
+        <div class="showcase-layout">
+            <div class="showcase-text">
+                <h2>تطبيق واحد.<br><span class="gradient-text">كل ماكرو.</span></h2>
+                <p>من قهوة الصباح لسناك الليل — ماي كال يتابع كل سعرة، كل ماكرو، كل يوم.</p>
+                <div class="showcase-badge">&#9889; حرية غذائية شاملة — بقوة الذكاء الاصطناعي، بدون تنازلات</div>
+            </div>
+            <div class="showcase-phone-wrapper">
+                <div class="showcase-orbiting">
+                    <div class="showcase-orbit-item so-1">&#128293;</div>
+                    <div class="showcase-orbit-item so-2">&#129382;</div>
+                    <div class="showcase-orbit-item so-3">&#128167;</div>
+                </div>
+                <div class="showcase-phone">
+                    <div class="phone-screen">
+                        <div class="app-header"><div class="app-avatar"></div><div class="app-greeting">صباح الخير! &#128075;</div><div class="app-cal-strip"><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span class="cal-active">27</span></div></div>
+                        <div class="app-body">
+                            <div class="app-calories"><span class="app-cal-num">1,284 / 2,100</span><span class="app-cal-label">سعرات</span></div>
+                            <div class="app-macros">
+                                <div class="app-macro"><div class="app-macro-val" style="color:var(--orange)">&#128293; 65g</div><span class="app-macro-name">بروتين</span></div>
+                                <div class="app-macro"><div class="app-macro-val" style="color:var(--green)">&#129382; 142g</div><span class="app-macro-name">كارب</span></div>
+                                <div class="app-macro"><div class="app-macro-val" style="color:var(--blue)">&#128167; 38g</div><span class="app-macro-name">دهون</span></div>
+                            </div>
+                            <div class="app-log-btn">+ سجّل وجبة</div>
+                            <div class="app-section-title">وجبات اليوم</div>
+                            <div class="app-meal"><span class="app-meal-left">&#127859; فطور</span><span class="app-meal-cal">420</span></div>
+                            <div class="app-meal"><span class="app-meal-left">&#127836; غداء</span><span class="app-meal-cal">580</span></div>
+                        </div>
+                        <div class="app-tabbar"><span class="app-tab active">&#127968;</span><span class="app-tab">&#128172;</span><span class="app-tab">&#128202;</span><span class="app-tab">&#128101;</span><span class="app-tab">&#9881;&#65039;</span></div>
+                    </div>
+                    <div class="phone-frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATS — Orb Visual + Numbers ===== -->
+<section class="stats-section">
+    <div class="stats-inner">
+        <div class="stats-visual view-item">
+            <div class="stats-orb"></div>
+            <div class="stats-orb-ring"></div>
+            <div class="stats-orb-ring stats-orb-ring-2"></div>
+            <div class="stats-orbit-item soi-1">&#127822;</div>
+            <div class="stats-orbit-item soi-2">&#129302;</div>
+            <div class="stats-orbit-item soi-3">&#127908;</div>
+            <div class="stats-orbit-item soi-4">&#128200;</div>
+        </div>
+        <div class="stats-content view-up">
+            <h2>الذكاء الاصطناعي في القلب</h2>
+            <p>مدعوم بذكاء اصطناعي متقدم يفهم الأكل مثل أخصائي تغذية حقيقي. تحليلات أذكى وأدق مع كل وجبة.</p>
+            <div class="stats-grid">
+                <div class="stat-item"><div class="stat-number">&lt;2s</div><div class="stat-label">تسجيل الوجبة</div></div>
+                <div class="stat-item"><div class="stat-number">500K+</div><div class="stat-label">أطعمة معروفة</div></div>
+                <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">دقة الذكاء</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== BENTO GRID ===== -->
+<section class="bento-section">
+    <div class="bento-inner">
+        <div class="bento-header view-up"><h2>كل شي تحتاجه.</h2></div>
+        <div class="bento-grid">
+            <div class="bento-card wide view-up stagger-1">
+                <h3>تسجيل الوجبات يحس مثل المحادثة</h3>
+                <p>محادثة طبيعية مع AI. بس قله وش أكلت.</p>
+                <div class="bento-illustration">
+                    <div class="mini-chat">
+                        <div class="mini-chat-bubble mini-chat-user">أكلت دجاج مشوي مع رز للغداء</div>
+                        <div class="mini-chat-bubble mini-chat-ai">تم! 520 سعرة — 42g بروتين، 48g كارب، 14g دهون &#9989;</div>
+                        <div class="mini-chat-bubble mini-chat-user">وش أقدر آكل سناك؟</div>
+                        <div class="mini-chat-bubble mini-chat-ai">جرب زبادي يوناني مع توت — 180 سعرة، 15g بروتين &#127827;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-card view-up stagger-2">
+                <h3>تتبع لحظي</h3>
+                <p>شوف الماكرو يمتلئ طول اليوم.</p>
+                <div class="bento-illustration">
+                    <div class="mini-phone">
+                        <div class="mini-phone-screen">
+                            <div class="mini-phone-row"><div class="mini-phone-circle" style="background:var(--orange)"></div><div class="mini-phone-bar" style="background:var(--orange);width:70%"></div></div>
+                            <div class="mini-phone-row"><div class="mini-phone-circle" style="background:var(--green)"></div><div class="mini-phone-bar" style="background:var(--green);width:55%"></div></div>
+                            <div class="mini-phone-row"><div class="mini-phone-circle" style="background:var(--blue)"></div><div class="mini-phone-bar" style="background:var(--blue);width:40%"></div></div>
+                            <div style="margin-top:auto;display:flex;gap:3px">
+                                <div class="mini-bar" style="height:28px;background:var(--orange);flex:1;border-radius:3px 3px 0 0"></div>
+                                <div class="mini-bar" style="height:20px;background:var(--green);flex:1;border-radius:3px 3px 0 0"></div>
+                                <div class="mini-bar" style="height:35px;background:var(--orange);flex:1;border-radius:3px 3px 0 0"></div>
+                                <div class="mini-bar" style="height:15px;background:var(--blue);flex:1;border-radius:3px 3px 0 0"></div>
+                                <div class="mini-bar" style="height:25px;background:var(--green);flex:1;border-radius:3px 3px 0 0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-card view-up stagger-3">
+                <h3>تعرّف بالصور</h3>
+                <p>صوّر — وخل AI يسوي الباقي بثوانٍ.</p>
+                <div class="bento-illustration">
+                    <div class="photo-flow">
+                        <span>&#128248;</span>
+                        <span class="flow-arrow">&#10132;</span>
+                        <span>&#127869;</span>
+                        <span class="flow-arrow">&#10132;</span>
+                        <span style="font-size:22px;background:var(--orange);color:#fff;padding:4px 10px;border-radius:8px;font-weight:700">520 cal</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-card wide view-up stagger-4">
+                <h3>خل AI يدعم تغذيتك</h3>
+                <p>اطلب اقتراحات وجبات، استشر، وخطط يومك — كله داخل المحادثة.</p>
+                <div class="bento-illustration">
+                    <div class="mini-chat">
+                        <div class="mini-chat-bubble mini-chat-user">وش آكل؟ باقي عندي 600 سعرة</div>
+                        <div class="mini-chat-bubble mini-chat-ai">جرب سلمون مع بطاطا حلوة — 540 سعرة، بروتين عالي، أوميقا-3 ممتازة! تبيني أسجلها؟ &#127843;</div>
+                        <div class="mini-chat-bubble mini-chat-user">أي سجلها!</div>
+                        <div class="mini-chat-bubble mini-chat-ai">تم! وصلت 95% من هدفك اليوم. شغل ممتاز! &#127881;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<section class="marquee-section">
+    <div class="marquee-row">
+        <div class="marquee-track">
+            <div class="marquee-item"><span>&#9989;</span> سجلت الفطور بثانيتين</div><div class="marquee-item"><span>&#127835;</span> 520 سعرة — دجاج مشوي مع رز</div><div class="marquee-item"><span>&#128248;</span> AI عرف طبق السوشي</div><div class="marquee-item"><span>&#127942;</span> حققت هدف البروتين اليوم</div><div class="marquee-item"><span>&#128170;</span> تابعت 4 وجبات بدون تعب</div><div class="marquee-item"><span>&#129302;</span> طلبت أفكار عشاء من AI</div><div class="marquee-item"><span>&#128247;</span> صورة لتحليل غذائي بضغطة</div><div class="marquee-item"><span>&#128293;</span> سلسلة يومية: 14 يوم</div>
+            <div class="marquee-item"><span>&#9989;</span> سجلت الفطور بثانيتين</div><div class="marquee-item"><span>&#127835;</span> 520 سعرة — دجاج مشوي مع رز</div><div class="marquee-item"><span>&#128248;</span> AI عرف طبق السوشي</div><div class="marquee-item"><span>&#127942;</span> حققت هدف البروتين اليوم</div><div class="marquee-item"><span>&#128170;</span> تابعت 4 وجبات بدون تعب</div><div class="marquee-item"><span>&#129302;</span> طلبت أفكار عشاء من AI</div><div class="marquee-item"><span>&#128247;</span> صورة لتحليل غذائي بضغطة</div><div class="marquee-item"><span>&#128293;</span> سلسلة يومية: 14 يوم</div>
+        </div>
+    </div>
+    <div class="marquee-row marquee-row-2">
+        <div class="marquee-track">
+            <div class="marquee-item"><span>&#127822;</span> فواكه</div><div class="marquee-item"><span>&#129385;</span> بروتين</div><div class="marquee-item"><span>&#129388;</span> سلطات</div><div class="marquee-item"><span>&#127834;</span> حبوب</div><div class="marquee-item"><span>&#129371;</span> ألبان</div><div class="marquee-item"><span>&#129361;</span> دهون صحية</div><div class="marquee-item"><span>&#127859;</span> فطور</div><div class="marquee-item"><span>&#127836;</span> غداء</div><div class="marquee-item"><span>&#127829;</span> عشاء</div><div class="marquee-item"><span>&#127848;</span> سناكات</div>
+            <div class="marquee-item"><span>&#127822;</span> فواكه</div><div class="marquee-item"><span>&#129385;</span> بروتين</div><div class="marquee-item"><span>&#129388;</span> سلطات</div><div class="marquee-item"><span>&#127834;</span> حبوب</div><div class="marquee-item"><span>&#129371;</span> ألبان</div><div class="marquee-item"><span>&#129361;</span> دهون صحية</div><div class="marquee-item"><span>&#127859;</span> فطور</div><div class="marquee-item"><span>&#127836;</span> غداء</div><div class="marquee-item"><span>&#127829;</span> عشاء</div><div class="marquee-item"><span>&#127848;</span> سناكات</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FINAL CTA — With phone mockup ===== -->
+<section class="cta-section">
+    <h2 class="view-up">مرحباً بمستقبل <span class="accent">التغذية.</span></h2>
+    <a href="https://apps.apple.com/app/mykal" class="btn-magic primary view-up view-delay-2" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        حمّل من App Store
+    </a>
+    <div class="cta-phone-wrapper view-up view-delay-3">
+        <div class="cta-phone">
+            <div class="phone-screen">
+                <div class="app-header"><div class="app-avatar"></div><div class="app-greeting">صباح الخير! &#128075;</div><div class="app-cal-strip"><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span class="cal-active">27</span></div></div>
+                <div class="app-body">
+                    <div class="app-calories"><span class="app-cal-num">1,284 / 2,100</span><span class="app-cal-label">سعرات</span></div>
+                    <div class="app-macros">
+                        <div class="app-macro"><div class="app-macro-val" style="color:var(--orange)">&#128293; 65g</div><span class="app-macro-name">بروتين</span></div>
+                        <div class="app-macro"><div class="app-macro-val" style="color:var(--green)">&#129382; 142g</div><span class="app-macro-name">كارب</span></div>
+                        <div class="app-macro"><div class="app-macro-val" style="color:var(--blue)">&#128167; 38g</div><span class="app-macro-name">دهون</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-frame"></div>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand"><img src="icon-192.png" alt="ماي كال"><p>رفيقك الذكي للتغذية. تابع وجباتك، حقق أهدافك، وابني عادات صحية مع AI.</p></div>
+        <div><h4>التطبيق</h4><ul><li><a href="#features">المميزات</a></li><li><a href="#how-it-works">طريقة الاستخدام</a></li></ul></div>
+        <div><h4>الدعم</h4><ul><li><a href="support-ar.html">المساعدة</a></li><li><a href="mailto:support@mykal.app">تواصل معنا</a></li></ul></div>
+        <div><h4>قانوني</h4><ul><li><a href="privacy-ar.html">الخصوصية</a></li><li><a href="terms-ar.html">الشروط</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 MyKal LLC. جميع الحقوق محفوظة.</span><span>صُنع بعناية من MyKal LLC</span></div>
+</footer>
+<script src="js/shared.js" defer></script>
+</body>
+</html>
