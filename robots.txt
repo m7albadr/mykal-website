@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://mykal.app/sitemap.xml
