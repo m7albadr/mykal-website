@@ -328,6 +328,7 @@
         .footer-bottom { max-width: 1200px; margin: 32px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
 
         /* ===== MOBILE ===== */
+        @keyframes orbit-mobile { 0%{ transform: rotate(0deg) translateX(110px) rotate(0deg); } 100%{ transform: rotate(360deg) translateX(110px) rotate(-360deg); } }
         @media (max-width: 768px) {
             .nav-links { display: none; } .lang-switch { margin-right: auto; } .hamburger { display: block; }
             .mobile-menu { display: block; pointer-events: none; } .mobile-menu.open { pointer-events: auto; }
@@ -346,8 +347,13 @@
             .showcase-container { width: 92%!important; border-radius: 20px!important; padding: 28px 18px; }
             .showcase-grid { grid-template-columns: repeat(2, 1fr); }
             .callout h2 { font-size: 32px; }
-            .orb-container { flex-direction: column; gap: 40px; text-align: center; }
-            .orb-visual { width: 200px; height: 200px; }
+            .orb-container { flex-direction: column; gap: 60px; text-align: center; }
+            .orb-visual { width: 220px; height: 220px; }
+            .orbit-item { width: 36px; height: 36px; margin: -18px 0 0 -18px; font-size: 16px; }
+            .oi-1 { animation: orbit-mobile 16s linear infinite; }
+            .oi-2 { animation: orbit-mobile 20s linear infinite reverse; }
+            .oi-3 { animation: orbit-mobile 14s linear infinite 4s; }
+            .oi-4 { animation: orbit-mobile 18s linear infinite reverse 2s; }
             .orb-stats { justify-content: center; }
             .how-inner { padding: 40px 24px; }
             .steps { grid-template-columns: 1fr; gap: 28px; } .steps::before { display: none; }
