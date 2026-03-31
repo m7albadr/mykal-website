@@ -5,19 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyKal — Your Smart Nutrition Companion</title>
     <meta name="description" content="Track your meals, hit your nutrition goals, and get AI-powered insights. Available on iOS.">
-    <!-- <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID"> TODO: Add real App Store ID -->
     <meta property="og:title" content="MyKal — Your Smart Nutrition Companion">
     <meta property="og:description" content="Track meals with AI, hit your macro goals, and build healthy habits.">
-    <meta property="og:image" content="icon-512.png">
+    <meta property="og:image" content="https://mykal.app/icon-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mykal.app/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="MyKal — Your Smart Nutrition Companion">
+    <meta name="twitter:description" content="Track meals with AI, hit your macro goals, and build healthy habits.">
+    <meta name="twitter:image" content="https://mykal.app/icon-512.png">
+    <meta name="theme-color" content="#E8742A">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="canonical" href="https://mykal.app/index.html">
-    <link rel="alternate" hreflang="en" href="https://mykal.app/index.html">
-    <link rel="alternate" hreflang="ar" href="https://mykal.app/index-ar.html">
+    <link rel="canonical" href="https://mykal.app/">
+    <link rel="alternate" hreflang="en" href="https://mykal.app/">
+    <link rel="alternate" hreflang="ar" href="https://mykal.app/index-ar">
+    <link rel="alternate" hreflang="x-default" href="https://mykal.app/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MyKal","operatingSystem":"iOS","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Track your meals with AI. Calories, macros, insights — all instant."}</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
     <script>
@@ -408,14 +417,20 @@
             border-radius: 4px;
         }
         a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
+
+        /* Skip link & screen reader only */
+        .skip-link { position: absolute; top: -100px; left: 16px; z-index: 200; background: var(--orange); color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: top 0.2s; }
+        .skip-link:focus { top: 12px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     </style>
 </head>
 <body>
+<a href="#benefits" class="skip-link">Skip to content</a>
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<nav id="navbar">
+<nav id="navbar" aria-label="Main navigation">
     <div class="nav-inner">
-        <a href="index.html" class="nav-logo"><img src="icon-192.png" alt="MyKal"><span>MyKal</span></a>
+        <a href="#" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"><img src="icon-192.png" alt="MyKal" width="36" height="36"><span>MyKal</span></a>
         <ul class="nav-links">
             <li><a href="#benefits">Features</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
@@ -423,10 +438,10 @@
             <li><a href="https://apps.apple.com/app/mykal" class="nav-cta" target="_blank" rel="noopener">Download</a></li>
         </ul>
         <button class="lang-switch" onclick="switchLang()">العربية</button>
-        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
     <a href="#benefits" onclick="closeMenu()">Features</a>
     <a href="#how-it-works" onclick="closeMenu()">How It Works</a>
     <a href="support.html">Support</a>
@@ -434,16 +449,17 @@
     <a href="terms.html">Terms</a>
     <a href="https://apps.apple.com/app/mykal" class="mobile-cta" target="_blank" rel="noopener">Download App</a>
     <button class="mobile-lang" onclick="switchLang()">العربية</button>
-</div>
+</nav>
 
+<main>
 <!-- ===== HERO ===== -->
 <section class="hero">
-    <div class="hero-float hf-1">&#127822;</div>
-    <div class="hero-float hf-2">&#129382;</div>
-    <div class="hero-float hf-3">&#127860;</div>
-    <div class="hero-float hf-4">&#129361;</div>
-    <div class="hero-float hf-5">&#127830;</div>
-    <div class="hero-float hf-6">&#129388;</div>
+    <div class="hero-float hf-1" aria-hidden="true">&#127822;</div>
+    <div class="hero-float hf-2" aria-hidden="true">&#129382;</div>
+    <div class="hero-float hf-3" aria-hidden="true">&#127860;</div>
+    <div class="hero-float hf-4" aria-hidden="true">&#129361;</div>
+    <div class="hero-float hf-5" aria-hidden="true">&#127830;</div>
+    <div class="hero-float hf-6" aria-hidden="true">&#129388;</div>
 
     <div class="hero-text">
         <div class="hero-badge"><span class="dot"></span> AI-Powered Nutrition Tracking</div>
@@ -459,7 +475,7 @@
     </div>
 
     <!-- Layered phones showing REAL app UI -->
-    <div class="hero-phones" id="heroPhones">
+    <div class="hero-phones" id="heroPhones" aria-hidden="true" role="presentation">
         <!-- Back phone: Chat -->
         <div class="phone phone-back">
             <div class="phone-screen-chat">
@@ -519,13 +535,14 @@
 
 <!-- ===== BENEFITS ===== -->
 <section class="benefits" id="benefits">
+    <h2 class="sr-only">Features</h2>
     <div class="benefit-card view-item bv-1">
         <div class="benefit-visual"><div class="benefit-visual-bg"></div><div class="benefit-emoji">&#128248;</div><div class="benefit-mini bm-1">&#127822;</div><div class="benefit-mini bm-2">&#129382;</div><div class="benefit-mini bm-3">&#127860;</div></div>
         <div class="benefit-content">
             <span class="benefit-badge">Smart Analysis</span>
             <h3>AI That Understands Your Food</h3>
             <p>Snap a photo, type a description, or just speak. Our AI instantly breaks down every meal into precise nutritional data.</p>
-            <ul class="benefit-list"><li>Photo recognition powered by AI vision</li><li>Natural language meal descriptions</li><li>Instant calorie & macro calculation</li></ul>
+            <ul class="benefit-list" role="list"><li>Photo recognition powered by AI vision</li><li>Natural language meal descriptions</li><li>Instant calorie & macro calculation</li></ul>
         </div>
     </div>
     <div class="benefit-card view-item bv-2">
@@ -534,7 +551,7 @@
             <span class="benefit-badge">Multi-Input</span>
             <h3>Log Meals Your Way</h3>
             <p>Voice, camera, or keyboard — choose whatever feels natural. MyKal adapts to your preferred way of tracking.</p>
-            <ul class="benefit-list"><li>Push-to-talk voice recognition</li><li>Camera-based meal scanning</li><li>Quick text-based logging</li></ul>
+            <ul class="benefit-list" role="list"><li>Push-to-talk voice recognition</li><li>Camera-based meal scanning</li><li>Quick text-based logging</li></ul>
         </div>
     </div>
     <div class="benefit-card view-item bv-3">
@@ -543,7 +560,7 @@
             <span class="benefit-badge">Insights</span>
             <h3>Reports That Actually Help</h3>
             <p>Daily, weekly, and monthly reports with charts, macro breakdowns, streaks, and beautiful shareable stories.</p>
-            <ul class="benefit-list"><li>Visual macro & calorie charts</li><li>Weekly and monthly trend analysis</li><li>Share your progress as stories</li></ul>
+            <ul class="benefit-list" role="list"><li>Visual macro & calorie charts</li><li>Weekly and monthly trend analysis</li><li>Share your progress as stories</li></ul>
         </div>
     </div>
 </section>
@@ -573,10 +590,10 @@
 </section>
 
 <!-- ===== TEXT CALLOUT ===== -->
-<div class="callout view-item">
+<section class="callout view-item">
     <h2>One App.<br><span class="gradient-text">Every Macro.</span></h2>
     <p>From your morning coffee to your midnight snack — MyKal tracks every calorie, every macro, every day.</p>
-</div>
+</section>
 
 <!-- ===== ORB SECTION (dark contrast) ===== -->
 <section class="orb-section">
@@ -603,7 +620,7 @@
 </section>
 
 <!-- ===== HOW IT WORKS ===== -->
-<div id="how-it-works" class="how-section">
+<section id="how-it-works" class="how-section">
     <div class="how-inner view-up">
         <div class="how-header">
             <span class="badge">How It Works</span>
@@ -615,11 +632,11 @@
             <div class="step view-up view-delay-3"><div class="step-num">3</div><h3>See Your Progress</h3><p>Watch your trends, get tips from the AI assistant, and share your wins.</p></div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- ===== CTA ===== -->
 <section class="cta-section">
-    <div class="cta-floats"><div class="cta-float cf-1">&#127860;</div><div class="cta-float cf-2">&#129382;</div><div class="cta-float cf-3">&#127822;</div><div class="cta-float cf-4">&#129361;</div></div>
+    <div class="cta-floats" aria-hidden="true"><div class="cta-float cf-1">&#127860;</div><div class="cta-float cf-2">&#129382;</div><div class="cta-float cf-3">&#127822;</div><div class="cta-float cf-4">&#129361;</div></div>
     <h2 class="view-up">Start Tracking Today</h2>
     <p class="view-up view-delay-1">Try your first meal analysis free. Download MyKal and take control of your nutrition.</p>
     <a href="https://apps.apple.com/app/mykal" class="btn-magic primary view-up view-delay-2" target="_blank" rel="noopener">
@@ -627,10 +644,11 @@
         Download on App Store
     </a>
 </section>
+</main>
 
 <footer>
     <div class="footer-inner">
-        <div class="footer-brand"><img src="icon-192.png" alt="MyKal"><p>Your smart nutrition companion. Track meals, hit goals, and build healthy habits with AI.</p></div>
+        <div class="footer-brand"><img src="icon-192.png" alt="MyKal" width="40" height="40" loading="lazy"><p>Your smart nutrition companion. Track meals, hit goals, and build healthy habits with AI.</p></div>
         <div><h4>App</h4><ul><li><a href="#benefits">Features</a></li><li><a href="#how-it-works">How It Works</a></li></ul></div>
         <div><h4>Support</h4><ul><li><a href="support.html">Help & FAQ</a></li><li><a href="mailto:support@mykal.app">Contact Us</a></li></ul></div>
         <div><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Use</a></li></ul></div>
@@ -640,7 +658,7 @@
 
 <script>
 const hamburger=document.getElementById('hamburger'), mobileMenu=document.getElementById('mobileMenu');
-hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');const isOpen=mobileMenu.classList.contains('open');document.body.style.overflow=isOpen?'hidden':'';hamburger.setAttribute('aria-expanded',isOpen);});
 function closeMenu(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}
 function switchLang(){localStorage.setItem('mykal-lang','ar');window.location.href='index-ar.html';}
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20);const s=window.scrollY,mx=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('scrollProgress').style.width=(s/mx*100)+'%';});

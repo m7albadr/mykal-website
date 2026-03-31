@@ -5,19 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ماي كال — رفيقك الذكي للأكل الصحي</title>
     <meta name="description" content="تابع وجباتك، حقق أهدافك، وخل الذكاء الاصطناعي يحلل لك كل شي. متوفر على iOS.">
-    <!-- <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID"> TODO: Add real App Store ID -->
     <meta property="og:title" content="ماي كال — رفيقك الذكي للأكل الصحي">
     <meta property="og:description" content="تابع وجباتك بالذكاء الاصطناعي، حقق أهداف الماكرو، وخلك على المسار الصحي.">
-    <meta property="og:image" content="icon-512.png">
+    <meta property="og:image" content="https://mykal.app/icon-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mykal.app/index-ar">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="ماي كال — رفيقك الذكي للأكل الصحي">
+    <meta name="twitter:description" content="تابع وجباتك بالذكاء الاصطناعي، حقق أهداف الماكرو، وخلك على المسار الصحي.">
+    <meta name="twitter:image" content="https://mykal.app/icon-512.png">
+    <meta name="theme-color" content="#E8742A">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="canonical" href="https://mykal.app/index-ar.html">
-    <link rel="alternate" hreflang="en" href="https://mykal.app/index.html">
-    <link rel="alternate" hreflang="ar" href="https://mykal.app/index-ar.html">
+    <link rel="canonical" href="https://mykal.app/index-ar">
+    <link rel="alternate" hreflang="en" href="https://mykal.app/">
+    <link rel="alternate" hreflang="ar" href="https://mykal.app/index-ar">
+    <link rel="alternate" hreflang="x-default" href="https://mykal.app/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MyKal","operatingSystem":"iOS","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"تابع وجباتك بالذكاء الاصطناعي. سعرات، ماكرو، وتحليل على طول."}</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
     <script>
@@ -408,14 +417,19 @@
             border-radius: 4px;
         }
         a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
+
+        .skip-link { position: absolute; top: -100px; right: 16px; z-index: 200; background: var(--orange); color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: top 0.2s; }
+        .skip-link:focus { top: 12px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     </style>
 </head>
 <body>
+<a href="#benefits" class="skip-link">تخطي إلى المحتوى</a>
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<nav id="navbar">
+<nav id="navbar" aria-label="التنقل الرئيسي">
     <div class="nav-inner">
-        <a href="index-ar.html" class="nav-logo"><img src="icon-192.png" alt="ماي كال"><span>MyKal</span></a>
+        <a href="#" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"><img src="icon-192.png" alt="ماي كال" width="36" height="36"><span>MyKal</span></a>
         <ul class="nav-links">
             <li><a href="#benefits">المميزات</a></li>
             <li><a href="#how-it-works">شلون يشتغل</a></li>
@@ -423,10 +437,10 @@
             <li><a href="https://apps.apple.com/app/mykal" class="nav-cta" target="_blank" rel="noopener">حمّل التطبيق</a></li>
         </ul>
         <button class="lang-switch" onclick="switchLang()">English</button>
-        <button class="hamburger" id="hamburger" aria-label="القائمة"><span></span><span></span><span></span></button>
+        <button class="hamburger" id="hamburger" aria-label="القائمة" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
+<nav class="mobile-menu" id="mobileMenu" aria-label="التنقل المحمول">
     <a href="#benefits" onclick="closeMenu()">المميزات</a>
     <a href="#how-it-works" onclick="closeMenu()">شلون يشتغل</a>
     <a href="support-ar.html">الدعم</a>
@@ -434,16 +448,17 @@
     <a href="terms-ar.html">الشروط</a>
     <a href="https://apps.apple.com/app/mykal" class="mobile-cta" target="_blank" rel="noopener">حمّل التطبيق</a>
     <button class="mobile-lang" onclick="switchLang()">English</button>
-</div>
+</nav>
 
+<main>
 <!-- ===== HERO ===== -->
 <section class="hero">
-    <div class="hero-float hf-1">&#127822;</div>
-    <div class="hero-float hf-2">&#129382;</div>
-    <div class="hero-float hf-3">&#127860;</div>
-    <div class="hero-float hf-4">&#129361;</div>
-    <div class="hero-float hf-5">&#127830;</div>
-    <div class="hero-float hf-6">&#129388;</div>
+    <div class="hero-float hf-1" aria-hidden="true">&#127822;</div>
+    <div class="hero-float hf-2" aria-hidden="true">&#129382;</div>
+    <div class="hero-float hf-3" aria-hidden="true">&#127860;</div>
+    <div class="hero-float hf-4" aria-hidden="true">&#129361;</div>
+    <div class="hero-float hf-5" aria-hidden="true">&#127830;</div>
+    <div class="hero-float hf-6" aria-hidden="true">&#129388;</div>
 
     <div class="hero-text">
         <div class="hero-badge"><span class="dot"></span> تسجيل ذكي بالـ AI</div>
@@ -459,7 +474,7 @@
     </div>
 
     <!-- Layered phones showing REAL app UI -->
-    <div class="hero-phones" id="heroPhones">
+    <div class="hero-phones" id="heroPhones" aria-hidden="true" role="presentation">
         <!-- Back phone: Chat -->
         <div class="phone phone-back">
             <div class="phone-screen-chat">
@@ -519,13 +534,14 @@
 
 <!-- ===== BENEFITS ===== -->
 <section class="benefits" id="benefits">
+    <h2 class="sr-only">المميزات</h2>
     <div class="benefit-card view-item bv-1">
         <div class="benefit-visual"><div class="benefit-visual-bg"></div><div class="benefit-emoji">&#128248;</div><div class="benefit-mini bm-1">&#127822;</div><div class="benefit-mini bm-2">&#129382;</div><div class="benefit-mini bm-3">&#127860;</div></div>
         <div class="benefit-content">
             <span class="benefit-badge">تحليل ذكي</span>
             <h3>ذكاء اصطناعي يفهم أكلك</h3>
             <p>صوّر وجبتك، اكتب وصف، أو تكلم. الذكاء الاصطناعي يحلل كل وجبة ويعطيك التفاصيل الغذائية على طول.</p>
-            <ul class="benefit-list"><li>يعرف أكلك من الصورة بالـ AI</li><li>وصّف وجبتك بكلامك العادي</li><li>يحسب لك السعرات والماكرو على طول</li></ul>
+            <ul class="benefit-list" role="list"><li>يعرف أكلك من الصورة بالـ AI</li><li>وصّف وجبتك بكلامك العادي</li><li>يحسب لك السعرات والماكرو على طول</li></ul>
         </div>
     </div>
     <div class="benefit-card view-item bv-2">
@@ -534,7 +550,7 @@
             <span class="benefit-badge">أكثر من طريقة</span>
             <h3>سجّل وجباتك بطريقتك</h3>
             <p>صوت، كاميرا، أو كتابة — اختار اللي يناسبك. ماي كال يمشي على كيفك.</p>
-            <ul class="benefit-list"><li>تسجيل بالصوت (اضغط وتكلم)</li><li>صوّر الوجبة بالكاميرا</li><li>كتابة سريعة بالنص</li></ul>
+            <ul class="benefit-list" role="list"><li>تسجيل بالصوت (اضغط وتكلم)</li><li>صوّر الوجبة بالكاميرا</li><li>كتابة سريعة بالنص</li></ul>
         </div>
     </div>
     <div class="benefit-card view-item bv-3">
@@ -543,7 +559,7 @@
             <span class="benefit-badge">تقارير</span>
             <h3>تقارير تفيدك فعلاً</h3>
             <p>تقارير يومية، أسبوعية، وشهرية مع رسوم بيانية، تحليل ماكرو، إنجازات، وستوريات حلوة تقدر تشاركها.</p>
-            <ul class="benefit-list"><li>رسوم بيانية للماكرو والسعرات</li><li>تحليل أسبوعي وشهري لتقدمك</li><li>شارك تقدمك كستوري</li></ul>
+            <ul class="benefit-list" role="list"><li>رسوم بيانية للماكرو والسعرات</li><li>تحليل أسبوعي وشهري لتقدمك</li><li>شارك تقدمك كستوري</li></ul>
         </div>
     </div>
 </section>
@@ -573,10 +589,10 @@
 </section>
 
 <!-- ===== TEXT CALLOUT ===== -->
-<div class="callout view-item">
+<section class="callout view-item">
     <h2>تطبيق واحد.<br><span class="gradient-text">كل الماكرو.</span></h2>
     <p>من قهوة الصباح لسناك الليل — ماي كال يتابع كل سعرة، كل ماكرو، كل يوم.</p>
-</div>
+</section>
 
 <!-- ===== ORB SECTION (dark contrast) ===== -->
 <section class="orb-section">
@@ -603,7 +619,7 @@
 </section>
 
 <!-- ===== HOW IT WORKS ===== -->
-<div id="how-it-works" class="how-section">
+<section id="how-it-works" class="how-section">
     <div class="how-inner view-up">
         <div class="how-header">
             <span class="badge">شلون يشتغل</span>
@@ -615,11 +631,11 @@
             <div class="step view-up view-delay-3"><div class="step-num">٣</div><h3>شوف تقدمك</h3><p>تابع تقدمك، خذ نصايح من المساعد الذكي، وشارك إنجازاتك.</p></div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- ===== CTA ===== -->
 <section class="cta-section">
-    <div class="cta-floats"><div class="cta-float cf-1">&#127860;</div><div class="cta-float cf-2">&#129382;</div><div class="cta-float cf-3">&#127822;</div><div class="cta-float cf-4">&#129361;</div></div>
+    <div class="cta-floats" aria-hidden="true"><div class="cta-float cf-1">&#127860;</div><div class="cta-float cf-2">&#129382;</div><div class="cta-float cf-3">&#127822;</div><div class="cta-float cf-4">&#129361;</div></div>
     <h2 class="view-up">ابدأ تتابع أكلك اليوم</h2>
     <p class="view-up view-delay-1">جرب أول تحليل وجبة ببلاش. حمّل ماي كال وتحكم بأكلك.</p>
     <a href="https://apps.apple.com/app/mykal" class="btn-magic primary view-up view-delay-2" target="_blank" rel="noopener">
@@ -627,10 +643,11 @@
         حمّل من App Store
     </a>
 </section>
+</main>
 
 <footer>
     <div class="footer-inner">
-        <div class="footer-brand"><img src="icon-192.png" alt="ماي كال"><p>رفيقك الذكي للأكل الصحي. تابع وجباتك، حقق أهدافك، وخلك على المسار الصحي بالذكاء الاصطناعي.</p></div>
+        <div class="footer-brand"><img src="icon-192.png" alt="ماي كال" width="40" height="40" loading="lazy"><p>رفيقك الذكي للأكل الصحي. تابع وجباتك، حقق أهدافك، وخلك على المسار الصحي بالذكاء الاصطناعي.</p></div>
         <div><h4>التطبيق</h4><ul><li><a href="#benefits">المميزات</a></li><li><a href="#how-it-works">شلون يشتغل</a></li></ul></div>
         <div><h4>الدعم</h4><ul><li><a href="support-ar.html">مساعدة وأسئلة شائعة</a></li><li><a href="mailto:support@mykal.app">تواصل معنا</a></li></ul></div>
         <div><h4>قانوني</h4><ul><li><a href="privacy-ar.html">سياسة الخصوصية</a></li><li><a href="terms-ar.html">شروط الاستخدام</a></li></ul></div>
@@ -640,7 +657,7 @@
 
 <script>
 const hamburger=document.getElementById('hamburger'), mobileMenu=document.getElementById('mobileMenu');
-hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');const isOpen=mobileMenu.classList.contains('open');document.body.style.overflow=isOpen?'hidden':'';hamburger.setAttribute('aria-expanded',isOpen);});
 function closeMenu(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}
 function switchLang(){localStorage.setItem('mykal-lang','en');window.location.href='index.html';}
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20);const s=window.scrollY,mx=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('scrollProgress').style.width=(s/mx*100)+'%';});
