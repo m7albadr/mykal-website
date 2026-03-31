@@ -503,10 +503,10 @@
             <div class="phone-screen-chat">
                 <div class="chat-header">&#129302; المساعد الذكي</div>
                 <div class="chat-body">
-                    <div class="chat-b chat-u">وش أكل للعشا؟ أكلت ١٤٠٠ سعرة لين الحين</div>
-                    <div class="chat-b chat-a">باقي لك ٧٠٠ سعرة. جرب دجاج مشوي مع رز وخضار — ٥٢٠ سعرة، ٤٢غ بروتين!</div>
+                    <div class="chat-b chat-u">وش أكل للعشا؟ أكلت 1400 سعرة لين الحين</div>
+                    <div class="chat-b chat-a">باقي لك 700 سعرة. جرب دجاج مشوي مع رز وخضار — 520 سعرة، 42غ بروتين!</div>
                     <div class="chat-b chat-u">تمام سجلها لي</div>
-                    <div class="chat-b chat-a">تم! وصلت ٩٢٪ من هدفك اليوم &#127881;</div>
+                    <div class="chat-b chat-a">تم! وصلت 92% من هدفك اليوم &#127881;</div>
                 </div>
                 <div class="chat-input">اكتب رسالة...</div>
             </div>
@@ -633,9 +633,9 @@
             <h2>الذكاء الاصطناعي يشتغل لك</h2>
             <p>يستخدم ذكاء اصطناعي يفهم الأكل مثل أخصائي تغذية حقيقي. ماي كال يتعلم من كل وجبة ويعطيك تحليلات أحسن وأدق كل ما استخدمته أكثر.</p>
             <div class="orb-stats">
-                <div><div class="orb-stat-number">٩٩٪</div><div class="orb-stat-label">دقة التحليل</div></div>
-                <div><div class="orb-stat-number">&lt;٣ث</div><div class="orb-stat-label">وقت التحليل</div></div>
-                <div><div class="orb-stat-number">+٥٠٠</div><div class="orb-stat-label">أكلة يعرفها</div></div>
+                <div><div class="orb-stat-number">99%</div><div class="orb-stat-label">دقة التحليل</div></div>
+                <div><div class="orb-stat-number">&lt;3s</div><div class="orb-stat-label">وقت التحليل</div></div>
+                <div><div class="orb-stat-number">500+</div><div class="orb-stat-label">أكلة يعرفها</div></div>
             </div>
         </div>
     </div>
@@ -646,12 +646,12 @@
     <div class="how-inner view-up">
         <div class="how-header">
             <span class="badge">شلون يشتغل</span>
-            <h2>ابدأ بـ ٣ خطوات بسيطة</h2>
+            <h2>ابدأ بـ 3 خطوات بسيطة</h2>
         </div>
         <div class="steps">
-            <div class="step view-up view-delay-1"><div class="step-num">١</div><h3>حدد أهدافك</h3><p>قول لنا أهدافك الغذائية وقت التسجيل — أو خل حاسبة BMR تقترح لك.</p></div>
-            <div class="step view-up view-delay-2"><div class="step-num">٢</div><h3>سجّل وجباتك</h3><p>اكتب، تكلم، أو صوّر. الذكاء الاصطناعي يحلل أكلك ويتابع السعرات والماكرو تلقائي.</p></div>
-            <div class="step view-up view-delay-3"><div class="step-num">٣</div><h3>شوف تقدمك</h3><p>تابع تقدمك، خذ نصايح من المساعد الذكي، وشارك إنجازاتك.</p></div>
+            <div class="step view-up view-delay-1"><div class="step-num">1</div><h3>حدد أهدافك</h3><p>قول لنا أهدافك الغذائية وقت التسجيل — أو خل حاسبة BMR تقترح لك.</p></div>
+            <div class="step view-up view-delay-2"><div class="step-num">2</div><h3>سجّل وجباتك</h3><p>اكتب، تكلم، أو صوّر. الذكاء الاصطناعي يحلل أكلك ويتابع السعرات والماكرو تلقائي.</p></div>
+            <div class="step view-up view-delay-3"><div class="step-num">3</div><h3>شوف تقدمك</h3><p>تابع تقدمك، خذ نصايح من المساعد الذكي، وشارك إنجازاتك.</p></div>
         </div>
     </div>
 </section>
@@ -696,15 +696,11 @@ document.querySelectorAll('.view-item,.view-up').forEach(el=>viewObs.observe(el)
 const $hint=document.querySelector('.scroll-hint');
 if($hint){let hintGone=false;window.addEventListener('scroll',()=>{if(!hintGone&&window.scrollY>80){$hint.style.opacity='0';$hint.style.transition='opacity .4s';hintGone=true;}},{passive:true});}
 
-/* Counter animation for orb stats (Arabic numerals) */
+/* Counter animation for orb stats */
 const statObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
   const el=e.target,txt=el.textContent;
-  const m=txt.match(/[\d٠-٩]+/);if(m){const raw=m[0],num=parseInt(raw.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
-  const toAr=n=>n.toString().replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
-  const pre=txt.slice(0,txt.indexOf(raw)),suf=txt.slice(txt.indexOf(raw)+raw.length);
-  const isAr=/[٠-٩]/.test(raw);el.textContent=pre+(isAr?'٠':'0')+suf;
-  let start=0;const dur=1200,step=ts=>{if(!start)start=ts;const p=Math.min((ts-start)/dur,1);
-  const v=Math.round(p*num);el.textContent=pre+(isAr?toAr(v):v)+suf;if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);}
+  const m=txt.match(/(\d+)/);if(m){const num=parseInt(m[1]),pre=txt.slice(0,txt.indexOf(m[0])),suf=txt.slice(txt.indexOf(m[0])+m[0].length);
+  el.textContent=pre+'0'+suf;let start=0;const dur=1200,step=ts=>{if(!start)start=ts;const p=Math.min((ts-start)/dur,1);el.textContent=pre+Math.round(p*num)+suf;if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);}
   statObs.unobserve(e.target);
 }});},{threshold:.5});
 document.querySelectorAll('.orb-stat-number').forEach(el=>statObs.observe(el));
