@@ -344,8 +344,8 @@
         .footer-brand p { font-size: 14px; max-width: 260px; line-height: 1.7; }
         footer h4 { color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 14px; }
         footer ul { list-style: none; } footer ul li { margin-bottom: 8px; }
-        footer a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color .3s; }
-        footer a:hover { color: var(--orange-light); }
+        footer a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color .3s, transform .3s cubic-bezier(0.16,1,0.3,1); display: inline-block; }
+        @media (hover: hover) { footer a:hover { color: var(--orange-light); transform: translateX(4px); } }
         .footer-bottom { max-width: 1200px; margin: 32px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
 
         /* ===== MOBILE ===== */
@@ -436,11 +436,20 @@
         .skip-link { position: absolute; top: -100px; left: 16px; z-index: 200; background: var(--orange); color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: top 0.2s; }
         .skip-link:focus { top: 12px; }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+        /* WOW: Cursor glow (desktop only) */
+        .cursor-glow { position: fixed; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(232,116,42,0.06) 0%, transparent 70%); pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: opacity .3s; opacity: 0; }
+        .cursor-glow.active { opacity: 1; }
+
+        /* WOW: Benefit card clip-path reveal */
+        .benefit-card .benefit-visual-bg { clip-path: circle(0% at 50% 50%); transition: clip-path .8s cubic-bezier(0.16,1,0.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+        .benefit-card.visible .benefit-visual-bg, .benefit-card:hover .benefit-visual-bg { clip-path: circle(75% at 50% 50%); }
     </style>
 </head>
 <body>
 <a href="#benefits" class="skip-link">Skip to content</a>
 <div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
 <nav id="navbar" aria-label="Main navigation">
     <div class="nav-inner">
@@ -711,8 +720,23 @@ gsap.to('.hero-text',{y:-50,opacity:.2,scrollTrigger:{trigger:'.hero',start:'30%
 if(window.innerWidth>768){gsap.fromTo('#showcaseContainer',{width:'60%',borderRadius:'28px'},{width:'100%',borderRadius:'0px',scrollTrigger:{trigger:'.showcase-trigger',start:'top 70%',end:'top 15%',scrub:1}});}
 }
 }catch(e){/* GSAP failed to load — content still accessible */}
-/* Mousemove parallax: RAF throttled + reduced-motion check */
-if(window.innerWidth>768&&!prefersReduced){const f=document.querySelectorAll('.hero-float');let moveTick=false;document.addEventListener('mousemove',e=>{if(!moveTick){moveTick=true;requestAnimationFrame(()=>{const x=(e.clientX/window.innerWidth-.5)*2,y=(e.clientY/window.innerHeight-.5)*2;f.forEach((el,i)=>{const o=(i+1)*6;el.style.setProperty('--px',o*x+'px');el.style.setProperty('--py',o*y+'px');});moveTick=false;});}},{passive:true});}
+/* Mousemove parallax + cursor glow: RAF throttled + reduced-motion check */
+if(window.innerWidth>768&&!prefersReduced){
+const f=document.querySelectorAll('.hero-float');
+const glow=document.getElementById('cursorGlow');
+let moveTick=false;
+document.addEventListener('mousemove',e=>{if(!moveTick){moveTick=true;requestAnimationFrame(()=>{
+const x=(e.clientX/window.innerWidth-.5)*2,y=(e.clientY/window.innerHeight-.5)*2;
+f.forEach((el,i)=>{const o=(i+1)*6;el.style.setProperty('--px',o*x+'px');el.style.setProperty('--py',o*y+'px');});
+if(glow){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';glow.classList.add('active');}
+moveTick=false;});}},{passive:true});
+/* Magnetic CTA buttons */
+document.querySelectorAll('.btn-magic').forEach(btn=>{
+btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+const dx=(e.clientX-cx)*0.15,dy=(e.clientY-cy)*0.15;btn.style.transform='translate('+dx+'px,'+dy+'px)';});
+btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
+});
+}
 });
 </script>
 </body>
