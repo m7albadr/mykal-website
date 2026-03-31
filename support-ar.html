@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الدعم — MyKal</title>
-    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="canonical" href="https://mykal.app/support-ar.html">
+    <link rel="alternate" hreflang="en" href="https://mykal.app/support.html">
+    <link rel="alternate" hreflang="ar" href="https://mykal.app/support-ar.html">
     <script>
     (function(){
         var s = localStorage.getItem('mykal-lang');
@@ -14,12 +17,14 @@
         }
     })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
         :root { --orange: #E8742A; --orange-light: #FF8C42; --dark: #2C1810; --medium: #6B5B50; --light: #A89585; --cream: #FBF7F2; --card: #FFFFFF; --border: #E8E0D6; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'IBM Plex Sans Arabic', sans-serif; background: var(--cream); color: var(--dark); line-height: 1.8; }
-        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(251,247,242,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(251,247,242,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; }
         .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; height: 64px; gap: 16px; }
         .nav-inner a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 20px; display: flex; align-items: center; gap: 10px; }
         .nav-inner img { width: 36px; border-radius: 10px; }
@@ -41,27 +46,67 @@
             display: inline-block; background: white; color: var(--orange);
             padding: 12px 28px; border-radius: 12px; font-weight: 700;
             text-decoration: none; margin-top: 16px;
+            transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
         }
+        .contact-card a:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
         .nav-links { margin-right: auto; margin-left: 0; display: flex; gap: 24px; list-style: none; }
         .nav-links a { font-size: 14px; font-weight: 500; color: var(--medium); text-decoration: none; }
         .nav-links a:hover { color: var(--orange); }
         .lang-link { font-size: 14px; color: var(--medium) !important; font-weight: 500 !important; }
-        @media (max-width: 768px) { .nav-links { display: none; } .lang-link { margin-right: auto; } }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 32px; position: relative; }
+        .hamburger span { display: block; width: 20px; height: 2px; background: var(--dark); position: absolute; left: 6px; transition: .3s; }
+        .hamburger span:nth-child(1) { top: 9px; } .hamburger span:nth-child(2) { top: 15px; } .hamburger span:nth-child(3) { top: 21px; }
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg); top: 15px; }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg); top: 15px; }
+        .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--cream); z-index: 99; padding: 32px 24px; flex-direction: column; gap: 24px; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 18px; font-weight: 600; color: var(--dark); text-decoration: none; }
+        .mobile-menu a:hover { color: var(--orange); }
+        footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 40px 24px 24px; margin-top: 60px; font-size: 13px; }
+        .footer-inner { max-width: 700px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; }
+        .footer-inner a { color: rgba(255,255,255,0.6); text-decoration: none; }
+        .footer-inner a:hover { color: #fff; }
+        .footer-bottom { max-width: 700px; margin: 24px auto 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); }
+        :focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 4px; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        .page-content { animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+        .page-content h1 { animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.15s both; }
+        .faq-item { opacity: 0; transform: translateY(16px); animation: fadeInUp 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+        .faq-item:nth-child(1) { animation-delay: 0.1s; }
+        .faq-item:nth-child(2) { animation-delay: 0.17s; }
+        .faq-item:nth-child(3) { animation-delay: 0.24s; }
+        .faq-item:nth-child(4) { animation-delay: 0.31s; }
+        .faq-item:nth-child(5) { animation-delay: 0.38s; }
+        .faq-item:nth-child(6) { animation-delay: 0.45s; }
+        .faq-item:nth-child(7) { animation-delay: 0.52s; }
+        .contact-card { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.6s both; }
+        .faq-item { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease, border-color 0.3s ease; }
+        .faq-item:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,24,16,0.06); border-color: rgba(232,116,42,0.2); }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .faq-item, .contact-card { opacity: 1; transform: none; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .lang-link { margin-right: auto; } .hamburger { display: block; } }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="nav-inner">
-        <a href="index-ar.html"><img src="icon.png" alt="MyKal"><span>MyKal</span></a>
+        <a href="index-ar.html"><img src="icon-192.png" alt="MyKal"><span>MyKal</span></a>
         <ul class="nav-links">
             <li><a href="index-ar.html">الرئيسية</a></li>
             <li><a href="privacy-ar.html">الخصوصية</a></li>
             <li><a href="terms-ar.html">الشروط</a></li>
         </ul>
         <a href="support.html" class="lang-link" onclick="localStorage.setItem('mykal-lang','en')">English</a>
+        <button class="hamburger" id="hamburger" aria-label="القائمة"><span></span><span></span><span></span></button>
     </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index-ar.html">الرئيسية</a>
+    <a href="privacy-ar.html">الخصوصية</a>
+    <a href="terms-ar.html">الشروط</a>
+    <a href="support.html" onclick="localStorage.setItem('mykal-lang','en')">English</a>
+</div>
 
 <div class="page-content">
     <h1>الدعم</h1>
@@ -111,5 +156,19 @@
     </div>
 </div>
 
+<footer>
+    <div class="footer-inner">
+        <div><a href="index-ar.html">الرئيسية</a></div>
+        <div><a href="privacy-ar.html">الخصوصية</a></div>
+        <div><a href="terms-ar.html">الشروط</a></div>
+        <div><a href="mailto:support@mykal.app">support@mykal.app</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 MyKal LLC. جميع الحقوق محفوظة.</div>
+</footer>
+
+<script>
+const h=document.getElementById('hamburger'),m=document.getElementById('mobileMenu');
+h.addEventListener('click',()=>{h.classList.toggle('open');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';});
+</script>
 </body>
 </html>
