@@ -148,7 +148,7 @@
         .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); padding: 8px 20px; border-radius: 40px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 28px; backdrop-filter: blur(8px); animation: fadeUp .8s ease-out; }
         .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
         .hero h1 { font-size: 58px; font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 18px; animation: fadeUp .8s ease-out .1s both; }
-        .hero-sub { font-size: 18px; color: rgba(255,255,255,0.88); max-width: 520px; margin: 0 auto 36px; line-height: 1.8; animation: fadeUp .8s ease-out .2s both; }
+        .hero-sub { font-size: 18px; color: rgba(255,255,255,0.92); max-width: 520px; margin: 0 auto 36px; line-height: 1.8; animation: fadeUp .8s ease-out .2s both; }
         .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp .8s ease-out .3s both; }
 
         .btn-magic { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; border-radius: 14px; font-size: 16px; font-weight: 700; text-decoration: none; font-family: inherit; cursor: pointer; border: none; transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s; position: relative; overflow: hidden; }
@@ -244,12 +244,18 @@
         .bm-2 { bottom: 20%; left: 15%; animation: levitate-2 5s infinite .5s; }
         .bm-3 { top: 20%; left: 20%; animation: levitate-3 4.5s infinite 1s; }
         .benefit-content { flex: 1; padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
-        .benefit-badge { display: inline-block; width: fit-content; background: rgba(232,116,42,0.08); color: var(--orange); padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 14px; }
+        .benefit-badge { display: inline-block; width: fit-content; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 14px; }
+        .bv-1 .benefit-badge { background: rgba(232,116,42,0.08); color: var(--orange); }
+        .bv-2 .benefit-badge { background: rgba(88,86,214,0.08); color: #5856D6; }
+        .bv-3 .benefit-badge { background: rgba(45,164,78,0.08); color: var(--green); }
         .benefit-content h3 { font-size: 24px; font-weight: 700; letter-spacing: -.3px; margin-bottom: 10px; color: var(--text); }
         .benefit-content p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 18px; }
         .benefit-list { list-style: none; }
         .benefit-list li { font-size: 14px; color: var(--text-2); padding: 5px 22px 5px 0; position: relative; }
-        .benefit-list li::before { content:''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+        .benefit-list li::before { content:''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; border-radius: 50%; }
+        .bv-1 .benefit-list li::before { background: var(--orange); }
+        .bv-2 .benefit-list li::before { background: #5856D6; }
+        .bv-3 .benefit-list li::before { background: var(--green); }
 
         /* ===== SHOWCASE (expanding) ===== */
         .showcase-trigger { padding: 100px 0; position: relative; }
@@ -271,10 +277,11 @@
         .marquee-track { display: flex; gap: 16px; width: max-content; animation: marquee-rtl 25s linear infinite; will-change: transform; }
         .marquee-item { display: flex; align-items: center; gap: 6px; background: var(--bg); border: 1px solid var(--border); padding: 6px 14px; border-radius: 30px; font-size: 12px; color: var(--text-2); font-weight: 500; white-space: nowrap; }
         .marquee-item span { font-size: 16px; }
+        @media (hover: hover) { .marquee:hover .marquee-track { animation-play-state: paused; } }
 
         /* ===== CALLOUT ===== */
         .callout { padding: 80px 24px; text-align: center; }
-        .callout h2 { font-size: 48px; font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 14px; color: var(--text); }
+        .callout h2 { font-size: 40px; font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 14px; color: var(--text); }
         .callout .gradient-text { background: linear-gradient(135deg, var(--orange-dark), var(--orange), var(--amber)); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradient-shift 4s infinite; }
         .callout p { font-size: 17px; color: var(--text-2); max-width: 520px; margin: 0 auto; line-height: 1.8; }
 
@@ -298,7 +305,7 @@
         .orb-content p { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 24px; }
         .orb-stats { display: flex; gap: 32px; }
         .orb-stat-number { font-size: 30px; font-weight: 700; background: linear-gradient(135deg, var(--orange), var(--amber)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .orb-stat-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+        .orb-stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
 
         /* ===== HOW IT WORKS ===== */
         .how-section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
@@ -611,9 +618,9 @@
             <h2>الذكاء الاصطناعي يشتغل لك</h2>
             <p>يستخدم ذكاء اصطناعي يفهم الأكل مثل أخصائي تغذية حقيقي. ماي كال يتعلم من كل وجبة ويعطيك تحليلات أحسن وأدق كل ما استخدمته أكثر.</p>
             <div class="orb-stats">
-                <div><div class="orb-stat-number">+٣</div><div class="orb-stat-label">طرق تسجيل</div></div>
-                <div><div class="orb-stat-number">٤</div><div class="orb-stat-label">عناصر تتابعها</div></div>
-                <div><div class="orb-stat-number">AI</div><div class="orb-stat-label">ذكاء اصطناعي</div></div>
+                <div><div class="orb-stat-number">٩٩٪</div><div class="orb-stat-label">دقة التحليل</div></div>
+                <div><div class="orb-stat-number">&lt;٣ث</div><div class="orb-stat-label">وقت التحليل</div></div>
+                <div><div class="orb-stat-number">+٥٠٠</div><div class="orb-stat-label">أكلة يعرفها</div></div>
             </div>
         </div>
     </div>
@@ -637,11 +644,11 @@
 <!-- ===== CTA ===== -->
 <section class="cta-section">
     <div class="cta-floats" aria-hidden="true"><div class="cta-float cf-1">&#127860;</div><div class="cta-float cf-2">&#129382;</div><div class="cta-float cf-3">&#127822;</div><div class="cta-float cf-4">&#129361;</div></div>
-    <h2 class="view-up">ابدأ تتابع أكلك اليوم</h2>
-    <p class="view-up view-delay-1">جرب أول تحليل وجبة ببلاش. حمّل ماي كال وتحكم بأكلك.</p>
+    <h2 class="view-up">مستعد تاكل أذكى؟</h2>
+    <p class="view-up view-delay-1">انضم للي يتابعون أكلهم بسهولة. حمّل ببلاش، والنتيجة على طول.</p>
     <a href="https://apps.apple.com/app/mykal" class="btn-magic primary view-up view-delay-2" target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        حمّل من App Store
+        حمّل ماي كال ببلاش
     </a>
 </section>
 </main>
