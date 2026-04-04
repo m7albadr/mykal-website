@@ -7,15 +7,15 @@
     <meta name="description" content="تابع وجباتك، حقق أهدافك، وخل الذكاء الاصطناعي يحلل لك كل شي. متوفر على iOS.">
     <meta property="og:title" content="ماي كال — رفيقك الذكي للأكل الصحي">
     <meta property="og:description" content="تابع وجباتك بالذكاء الاصطناعي، حقق أهداف الماكرو، وخلك على المسار الصحي.">
-    <meta property="og:image" content="https://mykal.app/icon-512.png">
-    <meta property="og:image:width" content="512">
-    <meta property="og:image:height" content="512">
+    <meta property="og:image" content="https://mykal.app/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mykal.app/index-ar">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ماي كال — رفيقك الذكي للأكل الصحي">
     <meta name="twitter:description" content="تابع وجباتك بالذكاء الاصطناعي، حقق أهداف الماكرو، وخلك على المسار الصحي.">
-    <meta name="twitter:image" content="https://mykal.app/icon-512.png">
+    <meta name="twitter:image" content="https://mykal.app/og-image.png">
     <meta name="theme-color" content="#E8742A">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -790,8 +790,10 @@ async function handleWaitlist(e){
   if(!email){msg.textContent='ادخل ايميلك';msg.className='waitlist-msg error';return false;}
   btn.disabled=true;btn.textContent='جاري التسجيل...';
   try{
+    const anonKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJxZHh0bWhkYm1zbGNwc2thZnFyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMDkzMDgsImV4cCI6MjA4OTg4NTMwOH0.ebW7kb_xZwRsAedzUTyf0RB1_WOyJDzFRX75yM7rVeo';
     const res=await fetch('https://rqdxtmhdbmslcpskafqr.supabase.co/rest/v1/waitlist',{
-      method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJxZHh0bWhkYm1zbGNwc2thZnFyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMDkzMDgsImV4cCI6MjA4OTg4NTMwOH0.ebW7kb_xZwRsAedzUTyf0RB1_WOyJDzFRX75yM7rVeo','Prefer':'return=minimal'},
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':anonKey,'Authorization':'Bearer '+anonKey,'Prefer':'return=minimal'},
       body:JSON.stringify({email:email})
     });
     if(res.ok||res.status===201){

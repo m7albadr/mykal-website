@@ -1,0 +1,36 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#B8501A"/>
+      <stop offset="35%" style="stop-color:#E8742A"/>
+      <stop offset="65%" style="stop-color:#FF8C42"/>
+      <stop offset="100%" style="stop-color:#FFB347"/>
+    </linearGradient>
+    <linearGradient id="textGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#FFE8D6;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background gradient -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle radial glow -->
+  <circle cx="600" cy="315" r="400" fill="white" opacity="0.06"/>
+  <circle cx="900" cy="200" r="300" fill="white" opacity="0.04"/>
+
+  <!-- MyKal text -->
+  <text x="600" y="290" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="120" font-weight="800" fill="url(#textGlow)" letter-spacing="-3">MyKal</text>
+
+  <!-- Tagline -->
+  <text x="600" y="370" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="32" font-weight="500" fill="white" opacity="0.85">Your Smart Nutrition Companion</text>
+
+  <!-- Subtle decorative emojis -->
+  <text x="180" y="200" font-size="48" opacity="0.25">&#127822;</text>
+  <text x="1020" y="180" font-size="42" opacity="0.2">&#129382;</text>
+  <text x="150" y="480" font-size="38" opacity="0.2">&#127860;</text>
+  <text x="1040" y="500" font-size="44" opacity="0.25">&#129361;</text>
+
+  <!-- Bottom accent line -->
+  <rect x="500" y="420" width="200" height="3" rx="2" fill="white" opacity="0.3"/>
+</svg>
