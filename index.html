@@ -25,7 +25,8 @@
     <link rel="alternate" hreflang="x-default" href="https://mykal.app/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="//aevlbfofaqypinxlzkqp.supabase.co">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MyKal","operatingSystem":"iOS","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Track your meals with AI. Calories, macros, insights — all instant."}</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
@@ -70,11 +71,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.65;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         ::selection { background: var(--orange); color: #fff; }
 
@@ -95,9 +98,9 @@
         @keyframes scroll-dot { 0%{ opacity:1; transform: translateX(-50%) translateY(0); } 80%,100%{ opacity:0; transform: translateX(-50%) translateY(14px); } }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-        .view-item { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-        .view-item.visible { opacity: 1; transform: scale(1); }
-        .view-up { opacity: 0; transform: translateY(50px) scale(0.95); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .view-item { opacity: 0; transform: scale(0.92) translateY(20px); transition: opacity 0.7s cubic-bezier(0.34,1.56,0.64,1), transform 0.7s cubic-bezier(0.34,1.56,0.64,1); }
+        .view-item.visible { opacity: 1; transform: scale(1) translateY(0); }
+        .view-up { opacity: 0; transform: translateY(50px) scale(0.95); transition: opacity 0.8s cubic-bezier(0.34,1.56,0.64,1), transform 0.8s cubic-bezier(0.34,1.56,0.64,1); }
         .view-up.visible { opacity: 1; transform: translateY(0) scale(1); }
         .view-delay-1 { transition-delay: .1s; } .view-delay-2 { transition-delay: .2s; } .view-delay-3 { transition-delay: .25s; }
         .stagger-1{transition-delay:.05s} .stagger-2{transition-delay:.12s} .stagger-3{transition-delay:.19s}
@@ -150,7 +153,7 @@
         .hero-text { position: relative; z-index: 3; text-align: center; max-width: 700px; color: #fff; }
         .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); padding: 8px 20px; border-radius: 40px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 28px; backdrop-filter: blur(8px); animation: fadeUp .8s ease-out; }
         .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
-        .hero h1 { font-size: 58px; font-weight: 800; letter-spacing: -2px; line-height: 1.08; margin-bottom: 18px; animation: fadeUp .8s ease-out .1s both; }
+        .hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(36px, 8vw, 58px); font-weight: 800; letter-spacing: -2px; line-height: 1.08; margin-bottom: 18px; animation: fadeUp .8s ease-out .1s both; }
         .hero-sub { font-size: 18px; color: rgba(255,255,255,0.92); max-width: 480px; margin: 0 auto 36px; line-height: 1.7; animation: fadeUp .8s ease-out .2s both; }
         .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp .8s ease-out .3s both; }
 
@@ -201,7 +204,8 @@
 
         /* Phone mockups */
         .hero-phones { position: relative; z-index: 2; width: 340px; height: 580px; margin: 40px auto 0; }
-        .phone { position: absolute; border-radius: 40px; overflow: hidden; background: #fff; border: 6px solid #2C1810; }
+        .phone { position: absolute; border-radius: 40px; overflow: hidden; background: #fff; border: 6px solid #1a1210; box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset; }
+        .phone::before { content:''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%); pointer-events: none; z-index: 5; border-radius: 34px; }
         @keyframes phoneBackIn { from { opacity: 0; transform: rotate(-8deg) translateY(60px) scale(0.9); } to { opacity: 0.55; transform: rotate(-8deg); } }
         @keyframes phoneFrontIn { from { opacity: 0; transform: translateY(80px) scale(0.85); } to { opacity: 1; transform: translateY(0) scale(1); } }
         .phone-back {
@@ -261,8 +265,8 @@
 
         /* ===== BENEFITS ===== */
         .benefits { max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 24px; }
-        .benefit-card { display: flex; align-items: stretch; background: var(--bg-white); border-radius: 24px; border: 1px solid var(--border); overflow: hidden; transition: box-shadow .4s, transform .4s; }
-        .benefit-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+        .benefit-card { display: flex; align-items: stretch; background: var(--bg-white); border-radius: 24px; border: 1px solid var(--border); overflow: hidden; transition: box-shadow .4s cubic-bezier(.16,1,.3,1), transform .4s cubic-bezier(.16,1,.3,1); perspective: 1000px; }
+        .benefit-card:hover { box-shadow: 0 24px 60px rgba(44,24,16,0.12); transform: translateY(-6px) rotateX(-1deg) rotateY(1deg); }
         .benefit-card:nth-child(even) { flex-direction: row-reverse; }
         .benefit-visual { flex: 0 0 45%; min-height: 320px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .benefit-visual-bg { position: absolute; inset: 0; transition: transform .6s cubic-bezier(.16,1,.3,1); }
@@ -389,6 +393,15 @@
             .waitlist-input-wrap .btn-magic.primary { border-radius: 14px; width: 100%; justify-content: center; }
         }
 
+        /* ===== STICKY CTA ===== */
+        .sticky-cta { position: fixed; bottom: 24px; right: 24px; z-index: 90; background: var(--orange); color: #fff; padding: 14px 28px; border-radius: 50px; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 8px 32px rgba(232,116,42,0.35); cursor: pointer; display: none; align-items: center; gap: 8px; font-family: inherit; border: none; animation: stickySlideUp .5s cubic-bezier(.34,1.56,.64,1); transition: transform .2s, box-shadow .2s; }
+        .sticky-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(232,116,42,0.45); }
+        .sticky-cta.show { display: inline-flex; }
+        @keyframes stickySlideUp { from { transform: translateY(80px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .waitlist-proof { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 12px; text-align: center; position: relative; }
+        .waitlist-subtext { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 8px; text-align: center; position: relative; }
+        @media (max-width: 600px) { .sticky-cta { right: 16px; bottom: 16px; padding: 12px 20px; font-size: 13px; } }
+
         /* ===== FOOTER ===== */
         footer { background: var(--text); color: rgba(255,255,255,0.5); padding: 56px 24px 28px; }
         .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
@@ -437,12 +450,25 @@
             .footer-inner { grid-template-columns: 1fr 1fr; gap: 20px; }
             .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
         }
+        @media (max-width: 640px) {
+            .benefit-content { padding: 24px 20px; }
+            .benefit-content h3 { font-size: 20px; }
+            .showcase-container { padding: 24px 14px; }
+            .how-inner { padding: 36px 20px; }
+            .cta-section { padding: 72px 20px; }
+            .cta-section h2 { font-size: 26px; }
+        }
         @media (max-width: 480px) {
             .hero h1 { font-size: 30px; }
             .hero-cta { flex-direction: column; align-items: center; }
             .btn-magic { width: 100%; justify-content: center; }
             .showcase-grid { grid-template-columns: 1fr; }
             .footer-inner { grid-template-columns: 1fr; }
+            .orb-stats { gap: 20px; flex-wrap: wrap; justify-content: center; }
+        }
+        @media (min-width: 1024px) {
+            .hero { padding: 160px 32px 100px; }
+            .benefits { padding: 100px 32px; }
         }
 
         /* Scroll progress */
@@ -715,14 +741,21 @@
     <h2 class="view-up" id="waitlist">Ready to Eat Smarter?</h2>
     <p class="view-up view-delay-1">Be the first to know when MyKal launches. Join the waitlist and get early access.</p>
     <form class="waitlist-form view-up view-delay-2" onsubmit="return handleWaitlist(event)">
+        <p class="waitlist-proof">Join early believers getting access first</p>
         <div class="waitlist-input-wrap">
             <input type="email" id="waitlistEmail" placeholder="Enter your email" required autocomplete="email">
-            <button type="submit" class="btn-magic primary" id="waitlistBtn">Join Waitlist</button>
+            <button type="submit" class="btn-magic primary" id="waitlistBtn">Get Early Access</button>
         </div>
+        <p class="waitlist-subtext">No spam, ever. Unsubscribe anytime.</p>
         <p class="waitlist-msg" id="waitlistMsg"></p>
     </form>
 </section>
 </main>
+
+<a href="#waitlist" class="sticky-cta" id="stickyCta">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    Join Waitlist
+</a>
 
 <footer>
     <div class="footer-inner">
@@ -754,10 +787,12 @@ async function handleWaitlist(e){
       body:JSON.stringify({email:email})
     });
     if(res.ok||res.status===201){
-      msg.textContent='You\'re on the list! We\'ll notify you when MyKal launches.';
+      const msgs=['You\'re in! We\'ll be in touch soon.','Welcome to the inner circle!','You\'re on the list. Get ready!'];
+      msg.textContent=msgs[Math.floor(Math.random()*msgs.length)];
       msg.className='waitlist-msg success';
       document.getElementById('waitlistEmail').value='';
       btn.textContent='Joined!';
+      if(stickyCta)stickyCta.style.display='none';
     }else if(res.status===409){
       msg.textContent='You\'re already on the waitlist!';msg.className='waitlist-msg success';btn.textContent='Join Waitlist';btn.disabled=false;
     }else{
@@ -780,6 +815,14 @@ window.addEventListener('scroll',()=>{if(!scrollTick){scrollTick=true;requestAni
 
 const viewObs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');viewObs.unobserve(el.target);}});},{threshold:.15,rootMargin:'0px 0px -60px 0px'});
 document.querySelectorAll('.view-item,.view-up').forEach(el=>viewObs.observe(el));
+
+/* Sticky CTA: shows after scrolling past hero */
+const stickyCta=document.getElementById('stickyCta');
+if(stickyCta){let stickyShown=false;window.addEventListener('scroll',()=>{
+  const heroEnd=document.querySelector('.hero').getBoundingClientRect().bottom;
+  if(heroEnd<-100&&!stickyShown){stickyCta.classList.add('show');stickyShown=true;}
+  else if(heroEnd>0&&stickyShown){stickyCta.classList.remove('show');stickyShown=false;}
+},{passive:true});}
 
 /* Scroll hint: fade out as user scrolls */
 const $hint=document.querySelector('.scroll-hint');
