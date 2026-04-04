@@ -114,9 +114,9 @@
         .nav-links a { text-decoration: none; color: var(--text-2); font-size: 14px; font-weight: 500; transition: color .3s cubic-bezier(0.16,1,0.3,1); position: relative; }
         .nav-links a::after { content: ''; position: absolute; bottom: -4px; right: 0; width: 0; height: 2px; background: var(--orange); border-radius: 1px; transition: width 0.3s cubic-bezier(0.16,1,0.3,1); }
         @media (hover: hover) { .nav-links a:hover::after { width: 100%; } .nav-links a:hover { color: var(--orange); } }
-        .nav-links .nav-cta { background: var(--orange); color: #fff; padding: 9px 22px; border-radius: 24px; font-weight: 600; transition: transform .2s, box-shadow .2s; box-shadow: var(--shadow-orange); }
+        .nav-links .nav-cta, .nav-links .nav-cta:visited, .nav-links .nav-cta:active { background: var(--orange); color: #fff !important; padding: 9px 22px; border-radius: 24px; font-weight: 600; transition: transform .2s, box-shadow .2s, background .2s; box-shadow: var(--shadow-orange); }
         .nav-links .nav-cta::after { display: none; }
-        .nav-links .nav-cta:hover { color: #fff; transform: translateY(-1px); box-shadow: 0 12px 40px rgba(232,116,42,0.3); }
+        .nav-links .nav-cta:hover { color: #fff !important; background: var(--orange-dark); transform: translateY(-1px); box-shadow: 0 12px 40px rgba(232,116,42,0.3); }
         .lang-switch { cursor: pointer; background: none; border: 1px solid var(--border); border-radius: 8px; padding: 5px 14px; font-size: 13px; color: var(--text-2); font-family: inherit; transition: border-color .3s, color .3s; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
         .lang-switch:hover { border-color: var(--orange); color: var(--orange); }
         .hamburger { display: none; cursor: pointer; background: none; border: none; width: 44px; height: 44px; z-index: 1001; }
@@ -656,7 +656,7 @@
             <div class="orb-stats">
                 <div><div class="orb-stat-number">99%</div><div class="orb-stat-label">دقة التحليل</div></div>
                 <div><div class="orb-stat-number">&lt;3s</div><div class="orb-stat-label">وقت التحليل</div></div>
-                <div><div class="orb-stat-number">500+</div><div class="orb-stat-label">أكلة يعرفها</div></div>
+                <div><div class="orb-stat-number">أي</div><div class="orb-stat-label">وجبة أو مطبخ</div></div>
             </div>
         </div>
     </div>
