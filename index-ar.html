@@ -337,6 +337,27 @@
         .cta-section p { font-size: 17px; color: rgba(255,255,255,0.85); margin-bottom: 36px; position: relative; }
         .cta-section .btn-magic.primary { background: #fff; color: var(--orange); box-shadow: 0 8px 32px rgba(0,0,0,0.15); position: relative; }
 
+        /* ===== WAITLIST FORM ===== */
+        .waitlist-form { position: relative; max-width: 480px; margin: 0 auto; }
+        .waitlist-input-wrap { display: flex; gap: 8px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 60px; padding: 6px; border: 1px solid rgba(255,255,255,0.25); }
+        .waitlist-input-wrap input { flex: 1; border: none; background: transparent; color: #fff; font-size: 15px; padding: 12px 18px; outline: none; font-family: inherit; min-width: 0; text-align: right; }
+        .waitlist-input-wrap input::placeholder { color: rgba(255,255,255,0.5); }
+        .waitlist-input-wrap .btn-magic.primary { margin: 0; padding: 12px 24px; font-size: 14px; white-space: nowrap; border: none; cursor: pointer; }
+        .waitlist-msg { font-size: 14px; margin-top: 12px; min-height: 20px; color: rgba(255,255,255,0.9); }
+        .waitlist-msg.success { color: #a8f0c0; }
+        .waitlist-msg.error { color: #ffb4b4; }
+        .hero-cta .waitlist-form { max-width: 420px; margin: 0; }
+        .hero-cta .waitlist-input-wrap { background: rgba(44,24,16,0.08); border-color: var(--border); }
+        .hero-cta .waitlist-input-wrap input { color: var(--text); }
+        .hero-cta .waitlist-input-wrap input::placeholder { color: var(--text-light); }
+        .hero-cta .waitlist-msg { color: var(--text-mid); }
+        .hero-cta .waitlist-msg.success { color: #2da44e; }
+        .hero-cta .waitlist-msg.error { color: #c0392b; }
+        @media (max-width: 600px) {
+            .waitlist-input-wrap { flex-direction: column; border-radius: 20px; padding: 8px; }
+            .waitlist-input-wrap .btn-magic.primary { border-radius: 14px; width: 100%; justify-content: center; }
+        }
+
         /* ===== FOOTER ===== */
         footer { background: var(--text); color: rgba(255,255,255,0.5); padding: 56px 24px 28px; }
         .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
@@ -457,7 +478,7 @@
             <li><a href="#benefits">المميزات</a></li>
             <li><a href="#how-it-works">شلون يشتغل</a></li>
             <li><a href="support-ar.html">الدعم</a></li>
-            <li><a href="https://apps.apple.com/app/mykal" class="nav-cta" target="_blank" rel="noopener">حمّل التطبيق</a></li>
+            <li><a href="#waitlist" class="nav-cta">انضم للقائمة</a></li>
         </ul>
         <button class="lang-switch" onclick="switchLang()">English</button>
         <button class="hamburger" id="hamburger" aria-label="القائمة" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -469,7 +490,7 @@
     <a href="support-ar.html">الدعم</a>
     <a href="privacy-ar.html">الخصوصية</a>
     <a href="terms-ar.html">الشروط</a>
-    <a href="https://apps.apple.com/app/mykal" class="mobile-cta" target="_blank" rel="noopener">حمّل التطبيق</a>
+    <a href="#waitlist" class="mobile-cta" onclick="closeMenu()">انضم للقائمة</a>
     <button class="mobile-lang" onclick="switchLang()">English</button>
 </nav>
 
@@ -488,9 +509,9 @@
         <h1>تابع. كل.<br>واستمتع.</h1>
         <p class="hero-sub">صوّر وجبتك، تكلم، أو اكتب — والباقي علينا. سعرات، ماكرو، وتحليل على طول.</p>
         <div class="hero-cta">
-            <a href="https://apps.apple.com/app/mykal" class="btn-magic primary" target="_blank" rel="noopener">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                حمّل من App Store
+            <a href="#waitlist" class="btn-magic primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                انضم لقائمة الانتظار
             </a>
             <a href="#benefits" class="btn-magic ghost">شوف المميزات</a>
         </div>
@@ -659,12 +680,15 @@
 <!-- ===== CTA ===== -->
 <section class="cta-section">
     <div class="cta-floats" aria-hidden="true"><div class="cta-float cf-1">&#127860;</div><div class="cta-float cf-2">&#129382;</div><div class="cta-float cf-3">&#127822;</div><div class="cta-float cf-4">&#129361;</div></div>
-    <h2 class="view-up">مستعد تاكل أذكى؟</h2>
-    <p class="view-up view-delay-1">انضم للي يتابعون أكلهم بسهولة. حمّل مجاناً، والنتيجة على طول.</p>
-    <a href="https://apps.apple.com/app/mykal" class="btn-magic primary view-up view-delay-2" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        حمّل ماي كال مجاناً
-    </a>
+    <h2 class="view-up" id="waitlist">مستعد تاكل أذكى؟</h2>
+    <p class="view-up view-delay-1">كن أول من يعرف لما ماي كال ينزل. سجّل بالقائمة واحصل على وصول مبكر.</p>
+    <form class="waitlist-form view-up view-delay-2" onsubmit="return handleWaitlist(event)">
+        <div class="waitlist-input-wrap">
+            <input type="email" id="waitlistEmail" placeholder="ادخل ايميلك" required autocomplete="email">
+            <button type="submit" class="btn-magic primary" id="waitlistBtn">انضم للقائمة</button>
+        </div>
+        <p class="waitlist-msg" id="waitlistMsg"></p>
+    </form>
 </section>
 </main>
 
@@ -683,6 +707,33 @@ const hamburger=document.getElementById('hamburger'), mobileMenu=document.getEle
 hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');const isOpen=mobileMenu.classList.contains('open');document.body.style.overflow=isOpen?'hidden':'';hamburger.setAttribute('aria-expanded',isOpen);});
 function closeMenu(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}
 function switchLang(){localStorage.setItem('mykal-lang','en');window.location.href='index.html';}
+
+/* Waitlist form handler — stores in Supabase */
+async function handleWaitlist(e){
+  e.preventDefault();
+  const email=document.getElementById('waitlistEmail').value.trim();
+  const msg=document.getElementById('waitlistMsg');
+  const btn=document.getElementById('waitlistBtn');
+  if(!email){msg.textContent='ادخل ايميلك';msg.className='waitlist-msg error';return false;}
+  btn.disabled=true;btn.textContent='جاري التسجيل...';
+  try{
+    const res=await fetch('https://aevlbfofaqypinxlzkqp.supabase.co/rest/v1/waitlist',{
+      method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldmxiZm9mYXF5cGlueGx6a3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI2NjU2NDIsImV4cCI6MjA1ODI0MTY0Mn0.RG9WUOV6EL5stMI-BGqyzRDqGxYjmWbOBq6c6ePYKhk','Prefer':'return=minimal'},
+      body:JSON.stringify({email:email})
+    });
+    if(res.ok||res.status===201){
+      msg.textContent='تم تسجيلك! بنخبرك لما ماي كال ينزل.';
+      msg.className='waitlist-msg success';
+      document.getElementById('waitlistEmail').value='';
+      btn.textContent='تم!';
+    }else if(res.status===409){
+      msg.textContent='ايميلك مسجل من قبل!';msg.className='waitlist-msg success';btn.textContent='انضم للقائمة';btn.disabled=false;
+    }else{
+      msg.textContent='صار خطأ. حاول مرة ثانية أو راسلنا support@mykal.app';msg.className='waitlist-msg error';btn.textContent='انضم للقائمة';btn.disabled=false;
+    }
+  }catch(err){msg.textContent='خطأ بالشبكة. حاول مرة ثانية.';msg.className='waitlist-msg error';btn.textContent='انضم للقائمة';btn.disabled=false;}
+  return false;
+}
 
 /* Scroll handler: passive + RAF throttle + cached refs */
 const $nav=document.getElementById('navbar'),$prog=document.getElementById('scrollProgress');
