@@ -159,8 +159,19 @@
         .btn-magic:hover::after { animation: shimmer 1.2s ease-in-out; }
         .btn-magic.primary { background: #fff; color: var(--orange); box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
         .btn-magic.primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
-        .btn-magic.ghost { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(8px); }
-        .btn-magic.ghost:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+        .btn-magic.ghost, .btn-magic.ghost:visited, .btn-magic.ghost:active { background: rgba(255,255,255,0.15); color: #fff !important; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(8px); }
+        .btn-magic.ghost:hover { background: rgba(255,255,255,0.25); color: #fff !important; transform: translateY(-3px); }
+
+        /* Pulse glow on primary hero CTA */
+        .hero-cta .btn-magic.primary { animation: hero-pulse 2.5s ease-in-out infinite; }
+        @keyframes hero-pulse {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 0 0 rgba(255,255,255,0.4); }
+            50% { box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 24px 4px rgba(255,255,255,0.2); }
+        }
+        .hero-cta .btn-magic.primary:hover { animation: none; }
+
+        /* AI badge on button */
+        .btn-ai-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--orange); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; letter-spacing: 0.5px; margin-right: 6px; vertical-align: middle; }
 
         /* Floating food (RTL mirrored) */
         .hero-float { position: absolute; font-size: 36px; pointer-events: none; z-index: 1; opacity: 0.45; --px: 0px; --py: 0px; translate: var(--px) var(--py); will-change: transform; }
@@ -512,6 +523,7 @@
             <a href="#waitlist" class="btn-magic primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 انضم لقائمة الانتظار
+                <span class="btn-ai-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61z"/></svg> AI</span>
             </a>
             <a href="#benefits" class="btn-magic ghost">شوف المميزات</a>
         </div>
@@ -654,9 +666,9 @@
             <h2>الذكاء الاصطناعي يشتغل لك</h2>
             <p>يستخدم ذكاء اصطناعي يفهم الأكل مثل أخصائي تغذية حقيقي. ماي كال يتعلم من كل وجبة ويعطيك تحليلات أحسن وأدق كل ما استخدمته أكثر.</p>
             <div class="orb-stats">
-                <div><div class="orb-stat-number">99%</div><div class="orb-stat-label">دقة التحليل</div></div>
+                <div><div class="orb-stat-number">90%</div><div class="orb-stat-label">دقة التحليل</div></div>
                 <div><div class="orb-stat-number">&lt;3s</div><div class="orb-stat-label">وقت التحليل</div></div>
-                <div><div class="orb-stat-number">أي</div><div class="orb-stat-label">وجبة أو مطبخ</div></div>
+                <div><div class="orb-stat-number">&#127759;</div><div class="orb-stat-label">كل المطابخ</div></div>
             </div>
         </div>
     </div>
