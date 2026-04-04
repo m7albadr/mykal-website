@@ -811,7 +811,7 @@ async function handleWaitlist(e){
     }else{
       msg.textContent='Something went wrong. Try again or email support@mykal.app';msg.className='waitlist-msg error';btn.textContent='Join Waitlist';btn.disabled=false;
     }
-  }catch(err){msg.textContent='Network error. Please try again.';msg.className='waitlist-msg error';btn.textContent='Join Waitlist';btn.disabled=false;}
+  }catch(err){console.error('Waitlist error:',err);msg.textContent='Network error. Please try again.';msg.className='waitlist-msg error';btn.textContent='Get Early Access';btn.disabled=false;}
   return false;
 }
 

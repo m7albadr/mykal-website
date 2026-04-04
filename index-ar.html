@@ -808,7 +808,7 @@ async function handleWaitlist(e){
     }else{
       msg.textContent='صار خطأ. حاول مرة ثانية أو راسلنا support@mykal.app';msg.className='waitlist-msg error';btn.textContent='انضم للقائمة';btn.disabled=false;
     }
-  }catch(err){msg.textContent='خطأ بالشبكة. حاول مرة ثانية.';msg.className='waitlist-msg error';btn.textContent='انضم للقائمة';btn.disabled=false;}
+  }catch(err){console.error('Waitlist error:',err);msg.textContent='خطأ بالشبكة. حاول مرة ثانية.';msg.className='waitlist-msg error';btn.textContent='سجّل الحين';btn.disabled=false;}
   return false;
 }
 
