@@ -782,8 +782,8 @@ async function handleWaitlist(e){
   if(!email){msg.textContent='Please enter your email.';msg.className='waitlist-msg error';return false;}
   btn.disabled=true;btn.textContent='Joining...';
   try{
-    const res=await fetch('https://aevlbfofaqypinxlzkqp.supabase.co/rest/v1/waitlist',{
-      method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldmxiZm9mYXF5cGlueGx6a3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI2NjU2NDIsImV4cCI6MjA1ODI0MTY0Mn0.RG9WUOV6EL5stMI-BGqyzRDqGxYjmWbOBq6c6ePYKhk','Prefer':'return=minimal'},
+    const res=await fetch('https://rqdxtmhdbmslcpskafqr.supabase.co/rest/v1/waitlist',{
+      method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJxZHh0bWhkYm1zbGNwc2thZnFyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMDkzMDgsImV4cCI6MjA4OTg4NTMwOH0.ebW7kb_xZwRsAedzUTyf0RB1_WOyJDzFRX75yM7rVeo','Prefer':'return=minimal'},
       body:JSON.stringify({email:email})
     });
     if(res.ok||res.status===201){
