@@ -166,12 +166,29 @@
         .hero-cta .btn-magic.primary { animation: hero-pulse 2.5s ease-in-out infinite; }
         @keyframes hero-pulse {
             0%, 100% { box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 0 0 rgba(255,255,255,0.4); }
-            50% { box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 24px 4px rgba(255,255,255,0.2); }
+            50% { box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 24px 6px rgba(255,255,255,0.25); }
         }
         .hero-cta .btn-magic.primary:hover { animation: none; }
 
-        /* AI badge on button */
-        .btn-ai-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--orange); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; letter-spacing: 0.5px; margin-left: 6px; vertical-align: middle; }
+        /* Ghost button subtle border glow */
+        .hero-cta .btn-magic.ghost { animation: ghost-glow 3s ease-in-out infinite 1s; }
+        @keyframes ghost-glow {
+            0%, 100% { border-color: rgba(255,255,255,0.35); box-shadow: none; }
+            50% { border-color: rgba(255,255,255,0.6); box-shadow: 0 0 16px rgba(255,255,255,0.1); }
+        }
+        .hero-cta .btn-magic.ghost:hover { animation: none; }
+
+        /* Hero badge pulse */
+        .hero-badge { animation: badge-float 4s ease-in-out infinite; }
+        @keyframes badge-float {
+            0%, 100% { transform: translateY(0); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+            50% { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        }
+        .hero-badge .dot { animation: dot-blink 2s ease-in-out infinite; }
+        @keyframes dot-blink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
 
         /* Floating food */
         .hero-float { position: absolute; font-size: 36px; pointer-events: none; z-index: 1; opacity: 0.45; --px: 0px; --py: 0px; translate: var(--px) var(--py); will-change: transform; }
@@ -201,9 +218,8 @@
         .phone-notch { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 90px; height: 24px; background: #2C1810; border-radius: 12px; z-index: 10; }
 
         /* ===== FRONT PHONE: Dashboard (matches real app) ===== */
-        .app-header { background: linear-gradient(135deg, var(--orange-dark), var(--orange), var(--amber)); padding: 42px 14px 14px; text-align: center; }
-        .app-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.3); margin: 0 auto 6px; }
-        .app-greeting { font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+        .app-header { background: linear-gradient(135deg, var(--orange-dark), var(--orange), var(--amber)); padding: 42px 14px 12px; text-align: center; }
+        .app-greeting { font-size: 11px; font-weight: 600; color: #fff; margin-bottom: 8px; }
         .app-cal-strip { display: flex; justify-content: center; gap: 8px; }
         .app-cal-strip span { font-size: 9px; color: rgba(255,255,255,0.6); width: 20px; text-align: center; }
         .app-cal-strip .cal-active { color: #fff; font-weight: 700; background: rgba(255,255,255,0.25); border-radius: 8px; padding: 2px 0; }
@@ -212,6 +228,8 @@
         .app-cal-num { font-size: 22px; font-weight: 800; color: var(--text); line-height: 1; }
         .app-cal-total { font-size: 12px; color: var(--text-3); }
         .app-cal-label { font-size: 10px; color: var(--text-2); float: right; margin-top: 4px; }
+        .app-cal-bar { height: 4px; background: rgba(232,116,42,0.12); border-radius: 3px; margin-top: 8px; clear: both; }
+        .app-cal-bar-fill { height: 100%; background: var(--orange); border-radius: 3px; }
         .app-macros { display: flex; gap: 4px; margin-bottom: 10px; }
         .app-macro { flex: 1; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 6px; text-align: center; }
         .app-macro-icon { font-size: 8px; }
@@ -319,6 +337,8 @@
         .orb-content p { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 24px; }
         .orb-stats { display: flex; gap: 32px; }
         .orb-stat-number { font-size: 30px; font-weight: 800; background: linear-gradient(135deg, var(--orange), var(--amber)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .orb-stat-emoji { font-size: 32px; line-height: 1.2; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s; }
+        .orb-stat-emoji.swap { transform: scale(0) rotate(180deg); opacity: 0; }
         .orb-stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
 
         /* ===== HOW IT WORKS ===== */
@@ -524,7 +544,6 @@
             <a href="#waitlist" class="btn-magic primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 Join the Waitlist
-                <span class="btn-ai-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61z"/></svg> AI</span>
             </a>
             <a href="#benefits" class="btn-magic ghost">Explore Features</a>
         </div>
@@ -550,27 +569,27 @@
             <div class="phone-notch"></div>
             <div class="phone-screen-dashboard">
                 <div class="app-header">
-                    <div class="app-avatar"></div>
-                    <div class="app-greeting">Good morning! &#128075;</div>
+                    <div class="app-greeting">&#128075; Good morning, Mohammed!</div>
                     <div class="app-cal-strip">
                         <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span class="cal-active">27</span>
                     </div>
                 </div>
                 <div class="app-body">
                     <div class="app-calories">
-                        <span class="app-cal-num">1,284 / 2,100</span>
+                        <span class="app-cal-num">1,284<span style="font-size:14px;font-weight:500;color:var(--text-2)"> / 2,100</span></span>
                         <span class="app-cal-label">Calories</span>
+                        <div class="app-cal-bar"><div class="app-cal-bar-fill" style="width:61%"></div></div>
                     </div>
                     <div class="app-macros">
-                        <div class="app-macro"><div class="app-macro-val" style="color:var(--orange)">&#128293;65/135</div><span class="app-macro-name">Protein</span></div>
-                        <div class="app-macro"><div class="app-macro-val" style="color:var(--green)">&#127793;142/202</div><span class="app-macro-name">Carbs</span></div>
-                        <div class="app-macro"><div class="app-macro-val" style="color:var(--blue)">&#128167;38/50</div><span class="app-macro-name">Fat</span></div>
+                        <div class="app-macro"><div class="app-macro-val" style="color:var(--orange)">&#128293; 65/135</div><span class="app-macro-name">Protein</span></div>
+                        <div class="app-macro"><div class="app-macro-val" style="color:var(--green)">&#127793; 142/202</div><span class="app-macro-name">Carbs</span></div>
+                        <div class="app-macro"><div class="app-macro-val" style="color:var(--blue)">&#128167; 38/50</div><span class="app-macro-name">Fat</span></div>
                     </div>
                     <div class="app-log-btn">+ Log meal</div>
                     <div class="app-section-title">Today's meals &#127860;</div>
-                    <div class="app-meal"><span class="app-meal-left">&#127859; Breakfast</span><span class="app-meal-cal">420</span></div>
-                    <div class="app-meal"><span class="app-meal-left">&#127836; Lunch</span><span class="app-meal-cal">580</span></div>
-                    <div class="app-meal"><span class="app-meal-left">&#127848; Snack</span><span class="app-meal-cal">284</span></div>
+                    <div class="app-meal"><span class="app-meal-left">&#129385; Eggs &amp; toast</span><span class="app-meal-cal">420</span></div>
+                    <div class="app-meal"><span class="app-meal-left">&#129385; Grilled chicken</span><span class="app-meal-cal">580</span></div>
+                    <div class="app-meal"><span class="app-meal-left">&#127848; Protein bar</span><span class="app-meal-cal">284</span></div>
                 </div>
                 <div class="app-tabbar">
                     <span class="app-tab active">&#127968;</span>
@@ -669,7 +688,7 @@
             <div class="orb-stats">
                 <div><div class="orb-stat-number">90%</div><div class="orb-stat-label">Accuracy</div></div>
                 <div><div class="orb-stat-number">&lt;3s</div><div class="orb-stat-label">Analysis time</div></div>
-                <div><div class="orb-stat-number">&#127759;</div><div class="orb-stat-label">All cuisines</div></div>
+                <div><div class="orb-stat-emoji" id="cuisineEmoji">🍕</div><div class="orb-stat-label">All cuisines</div></div>
             </div>
         </div>
     </div>
@@ -747,6 +766,12 @@ async function handleWaitlist(e){
   }catch(err){msg.textContent='Network error. Please try again.';msg.className='waitlist-msg error';btn.textContent='Join Waitlist';btn.disabled=false;}
   return false;
 }
+
+/* Cycling cuisine emojis */
+const cuisineEmojis=['🍕','🍣','🥘','🌮','🍜','🥗','🍔','🥙','🍛','🧆','🍱','🥟','🍲','🫔','🥩'];
+let emojiIdx=0;
+const emojiEl=document.getElementById('cuisineEmoji');
+if(emojiEl){setInterval(()=>{emojiEl.classList.add('swap');setTimeout(()=>{emojiIdx=(emojiIdx+1)%cuisineEmojis.length;emojiEl.textContent=cuisineEmojis[emojiIdx];emojiEl.classList.remove('swap');},300);},1800);}
 
 /* Scroll handler: passive + RAF throttle + cached refs */
 const $nav=document.getElementById('navbar'),$prog=document.getElementById('scrollProgress');

@@ -166,12 +166,29 @@
         .hero-cta .btn-magic.primary { animation: hero-pulse 2.5s ease-in-out infinite; }
         @keyframes hero-pulse {
             0%, 100% { box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 0 0 rgba(255,255,255,0.4); }
-            50% { box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 24px 4px rgba(255,255,255,0.2); }
+            50% { box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 24px 6px rgba(255,255,255,0.25); }
         }
         .hero-cta .btn-magic.primary:hover { animation: none; }
 
-        /* AI badge on button */
-        .btn-ai-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--orange); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; letter-spacing: 0.5px; margin-right: 6px; vertical-align: middle; }
+        /* Ghost button subtle border glow */
+        .hero-cta .btn-magic.ghost { animation: ghost-glow 3s ease-in-out infinite 1s; }
+        @keyframes ghost-glow {
+            0%, 100% { border-color: rgba(255,255,255,0.35); box-shadow: none; }
+            50% { border-color: rgba(255,255,255,0.6); box-shadow: 0 0 16px rgba(255,255,255,0.1); }
+        }
+        .hero-cta .btn-magic.ghost:hover { animation: none; }
+
+        /* Hero badge pulse */
+        .hero-badge { animation: badge-float 4s ease-in-out infinite; }
+        @keyframes badge-float {
+            0%, 100% { transform: translateY(0); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+            50% { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        }
+        .hero-badge .dot { animation: dot-blink 2s ease-in-out infinite; }
+        @keyframes dot-blink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
 
         /* Floating food (RTL mirrored) */
         .hero-float { position: absolute; font-size: 36px; pointer-events: none; z-index: 1; opacity: 0.45; --px: 0px; --py: 0px; translate: var(--px) var(--py); will-change: transform; }
@@ -319,6 +336,8 @@
         .orb-content p { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 24px; }
         .orb-stats { display: flex; gap: 32px; }
         .orb-stat-number { font-size: 30px; font-weight: 700; background: linear-gradient(135deg, var(--orange), var(--amber)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .orb-stat-emoji { font-size: 32px; line-height: 1.2; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s; }
+        .orb-stat-emoji.swap { transform: scale(0) rotate(180deg); opacity: 0; }
         .orb-stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
 
         /* ===== HOW IT WORKS ===== */
@@ -523,7 +542,6 @@
             <a href="#waitlist" class="btn-magic primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 انضم لقائمة الانتظار
-                <span class="btn-ai-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61z"/></svg> AI</span>
             </a>
             <a href="#benefits" class="btn-magic ghost">شوف المميزات</a>
         </div>
@@ -668,7 +686,7 @@
             <div class="orb-stats">
                 <div><div class="orb-stat-number">90%</div><div class="orb-stat-label">دقة التحليل</div></div>
                 <div><div class="orb-stat-number">&lt;3s</div><div class="orb-stat-label">وقت التحليل</div></div>
-                <div><div class="orb-stat-number">&#127759;</div><div class="orb-stat-label">كل المطابخ</div></div>
+                <div><div class="orb-stat-emoji" id="cuisineEmoji">🍕</div><div class="orb-stat-label">كل المطابخ</div></div>
             </div>
         </div>
     </div>
@@ -746,6 +764,12 @@ async function handleWaitlist(e){
   }catch(err){msg.textContent='خطأ بالشبكة. حاول مرة ثانية.';msg.className='waitlist-msg error';btn.textContent='انضم للقائمة';btn.disabled=false;}
   return false;
 }
+
+/* Cycling cuisine emojis */
+const cuisineEmojis=['🍕','🍣','🥘','🌮','🍜','🥗','🍔','🥙','🍛','🧆','🍱','🥟','🍲','🫔','🥩'];
+let emojiIdx=0;
+const emojiEl=document.getElementById('cuisineEmoji');
+if(emojiEl){setInterval(()=>{emojiEl.classList.add('swap');setTimeout(()=>{emojiIdx=(emojiIdx+1)%cuisineEmojis.length;emojiEl.textContent=cuisineEmojis[emojiIdx];emojiEl.classList.remove('swap');},300);},1800);}
 
 /* Scroll handler: passive + RAF throttle + cached refs */
 const $nav=document.getElementById('navbar'),$prog=document.getElementById('scrollProgress');
